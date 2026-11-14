@@ -1,0 +1,350 @@
+[
+  {
+    "role": "lunar_dem",
+    "path": "data\\raw\\Site01_final_adj_5mpp_surf.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA Site01 5 mpp",
+    "size_bytes": 40980810,
+    "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
+    "accessed_utc": "2026-11-14T21:14:48+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -19000.0,
+      -20000.0,
+      -3000.0,
+      -4000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": -523.1834106445312,
+    "max": 1959.4962158203125
+  },
+  {
+    "role": "lunar_ldec",
+    "path": "data\\raw\\Site01_final_adj_5mpp_ldec.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA Site01 5 mpp",
+    "size_bytes": 40980744,
+    "sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
+    "accessed_utc": "2026-11-14T21:14:48+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -19000.0,
+      -20000.0,
+      -3000.0,
+      -4000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.0,
+    "max": 5.0
+  },
+  {
+    "role": "lunar_toterr",
+    "path": "data\\raw\\Site01_final_adj_5mpp_toterr.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA Site01 5 mpp",
+    "size_bytes": 40980810,
+    "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
+    "accessed_utc": "2026-11-14T21:14:48+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -19000.0,
+      -20000.0,
+      -3000.0,
+      -4000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.061578184366226196,
+    "max": 5.582818508148193
+  },
+  {
+    "role": "earth_dem:haughton",
+    "path": "data\\raw\\haughton_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 55239170,
+    "sha256": "f81e48eee47e8f9dc64243d0a9c3b68fdd55035d010ae34636c6ff7fb0bf1756",
+    "accessed_utc": "2026-11-14T21:14:50+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      1980,
+      9720
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      -91.0001389,
+      75.1001389,
+      -88.3001389,
+      75.6501389
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": -1.380724549293518,
+    "max": 476.6804504394531
+  },
+  {
+    "role": "earth_dem:atacama",
+    "path": "data\\raw\\atacama_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 70359221,
+    "sha256": "b9b4db84a40c20fc7eb7900897ddb8c894006be49db00d6251ca4fb44af70f36",
+    "accessed_utc": "2026-11-14T21:14:53+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      5400,
+      3600
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      -69.0001389,
+      -23.999861100000004,
+      -68.0001389,
+      -22.499861100000004
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 2068.65478515625,
+    "max": 4974.27978515625
+  },
+  {
+    "role": "earth_dem:etna",
+    "path": "data\\raw\\etna_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 14528281,
+    "sha256": "295a155a7b3a5f1c78765191666e6d5311898e382ab980a2d124e4fb7624ea96",
+    "accessed_utc": "2026-11-14T21:14:54+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      1800,
+      2160
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      14.699861099999993,
+      37.500138899999996,
+      15.299861099999992,
+      38.000138899999996
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": -2.382205009460449,
+    "max": 3323.77587890625
+  },
+  {
+    "role": "earth_dem:lanzarote",
+    "path": "data\\raw\\lanzarote_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 4403771,
+    "sha256": "c1ac1fbf18646e17bee7d130d64d9ff64f82b87768bf2478e34120c564f02894",
+    "accessed_utc": "2026-11-14T21:14:54+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      1620,
+      2340
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      -13.950138899999985,
+      28.800138899999997,
+      -13.300138899999984,
+      29.250138899999996
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": -2.639307975769043,
+    "max": 672.866943359375
+  },
+  {
+    "role": "earth_dem:askja",
+    "path": "data\\raw\\askja_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 27402649,
+    "sha256": "655be25a63ea0633b3ddd303e861f801ac4074382c5801f877a361d435710fad",
+    "accessed_utc": "2026-11-14T21:14:55+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      1800,
+      4680
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      -17.4001389,
+      64.8001389,
+      -16.1001389,
+      65.3001389
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 369.8959045410156,
+    "max": 1575.94921875
+  },
+  {
+    "role": "earth_dem:cinder_lake",
+    "path": "data\\raw\\cinder_lake_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 17432446,
+    "sha256": "4c9a006e806631026752851afff76cf9840fe1cb26c5256576a091eb5c663727",
+    "accessed_utc": "2026-11-14T21:14:56+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      1980,
+      2340
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      -111.9501389,
+      35.2001389,
+      -111.3001389,
+      35.750138899999996
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 1275.5877685546875,
+    "max": 3845.547607421875
+  },
+  {
+    "role": "earth_dem:khaybar",
+    "path": "data\\raw\\khaybar_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 31810008,
+    "sha256": "25f17fe1c9e0480e2fc345ecfbdd9e6ecbdba17e3467773672f1bf3cac8457b1",
+    "accessed_utc": "2026-11-14T21:14:57+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      2880,
+      2880
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      39.499861100000004,
+      25.300138899999997,
+      40.2998611,
+      26.100138899999997
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 833.1558227539062,
+    "max": 2091.58056640625
+  },
+  {
+    "role": "earth_dem:undara",
+    "path": "data\\raw\\undara_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 21223691,
+    "sha256": "b812867605ffdfb0cbb7d3ec9b5fd87893f919699f50687b2e99ad93802eac06",
+    "accessed_utc": "2026-11-14T21:14:58+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      2160,
+      2520
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      144.29986110000002,
+      -18.49986110000001,
+      144.9998611,
+      -17.89986110000001
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 419.0,
+    "max": 1029.7794189453125
+  },
+  {
+    "role": "earth_dem:jingpo",
+    "path": "data\\raw\\jingpo_cop30.tif",
+    "url": "https://doi.org/10.5270/ESA-c5d3d65",
+    "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+    "size_bytes": 25448802,
+    "sha256": "322cfb8e354cacb0219a3163af26ad0e750d6ad65477b6b1f02d85d73cbc7a30",
+    "accessed_utc": "2026-11-14T21:14:59+00:00",
+    "crs": "EPSG:4326",
+    "shape": [
+      2160,
+      2880
+    ],
+    "pixel_size": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "bounds": [
+      128.4998611,
+      43.6001389,
+      129.29986110000002,
+      44.2001389
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 264.3348693847656,
+    "max": 1112.7393798828125
+  }
+]

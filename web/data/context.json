@@ -1,0 +1,537 @@
+{
+ "haughton": {
+  "region": "haughton",
+  "retrieved": "2026-11-14",
+  "center": [
+   75.38,
+   -89.67
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 0,
+   "count_m45": 0,
+   "max_magnitude": null,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 0,
+   "nearest": null
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": -14.42,
+   "warmest_month_mean_max_c": 16.81,
+   "coldest_month_mean_min_c": -48.55,
+   "annual_range_c": 65.36
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "limestone, dolostone, shale, evaporites, chalk; carbonate reefs",
+     "share": 0.56
+    },
+    {
+     "lith": "sedimentary",
+     "share": 0.44
+    }
+   ],
+   "units": [
+    "Sedimentary; Carbonate",
+    "Silurian sedimentary",
+    "Ordovician-Silurian sedimentary"
+   ]
+  }
+ },
+ "atacama": {
+  "region": "atacama",
+  "retrieved": "2026-11-14",
+  "center": [
+   -23.25,
+   -68.5
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 876,
+   "count_m45": 318,
+   "max_magnitude": 7.4,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 10,
+   "nearest": {
+    "name": "Licancabur",
+    "distance_km": 78.8,
+    "last_eruption_year": null,
+    "type": "Stratovolcano"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 12.44,
+   "warmest_month_mean_max_c": 31.24,
+   "coldest_month_mean_min_c": -6.81,
+   "annual_range_c": 38.05
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "Siliciclastic",
+     "share": 0.56
+    },
+    {
+     "lith": "Volcaniclastic, volcanic",
+     "share": 0.12
+    },
+    {
+     "lith": "Andesite and related volcanic",
+     "share": 0.12
+    }
+   ],
+   "units": [
+    "Neogene Siliciclastic",
+    "Neogene - Quaternary Siliciclastic",
+    "Neogene Rhyolitic"
+   ]
+  }
+ },
+ "etna": {
+  "region": "etna",
+  "retrieved": "2026-11-14",
+  "center": [
+   37.75,
+   15.0
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 575,
+   "count_m45": 24,
+   "max_magnitude": 5.6,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 4,
+   "nearest": {
+    "name": "Etna",
+    "distance_km": 0.2,
+    "last_eruption_year": 2026,
+    "type": "Stratovolcano(es)"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 16.51,
+   "warmest_month_mean_max_c": 39.87,
+   "coldest_month_mean_min_c": -0.22,
+   "annual_range_c": 40.09
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "Major:{alkali basalt}, Minor{tuff group,tephrite, basanite,phonolite}",
+     "share": 0.38
+    },
+    {
+     "lith": "Major:{sandstone}, Minor{claystone,limestone}",
+     "share": 0.12
+    },
+    {
+     "lith": "sin clasificar",
+     "share": 0.12
+    }
+   ],
+   "units": [
+    "Quaternary alkali",
+    "Oligocene sandstone",
+    "submarine continental crust"
+   ]
+  }
+ },
+ "lanzarote": {
+  "region": "lanzarote",
+  "retrieved": "2026-11-14",
+  "center": [
+   29.03,
+   -13.63
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 9,
+   "count_m45": 0,
+   "max_magnitude": 4.3,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 2,
+   "nearest": {
+    "name": "Lanzarote",
+    "distance_km": 0.0,
+    "last_eruption_year": 1824,
+    "type": "Fissure vent(s)"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 20.12,
+   "warmest_month_mean_max_c": 28.47,
+   "coldest_month_mean_min_c": 13.0,
+   "annual_range_c": 15.47
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "tholeiitic basalt",
+     "share": 0.75
+    },
+    {
+     "lith": "volcanic",
+     "share": 0.25
+    }
+   ],
+   "units": [
+    "North Atlantic Ocean"
+   ]
+  }
+ },
+ "askja": {
+  "region": "askja",
+  "retrieved": "2026-11-14",
+  "center": [
+   65.03,
+   -16.75
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 558,
+   "count_m45": 332,
+   "max_magnitude": 5.6,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 13,
+   "nearest": {
+    "name": "Askja",
+    "distance_km": 1.6,
+    "last_eruption_year": 1961,
+    "type": "Stratovolcano"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": -2.84,
+   "warmest_month_mean_max_c": 10.31,
+   "coldest_month_mean_min_c": -23.83,
+   "annual_range_c": 34.14
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "volcanic: mafic rocks",
+     "share": 0.62
+    },
+    {
+     "lith": "basalt, olivine basalt, tholeiite, alkali basalt, basanite, pillow basalt, flood basalt",
+     "share": 0.25
+    },
+    {
+     "lith": "basalt group",
+     "share": 0.12
+    }
+   ],
+   "units": [
+    "Quaternary volcanic: mafic rocks",
+    "Igneous: extrusive; Extrusive: mafic",
+    "Quaternary basalt"
+   ]
+  }
+ },
+ "cinder_lake": {
+  "region": "cinder_lake",
+  "retrieved": "2026-11-14",
+  "center": [
+   35.45,
+   -111.6
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 83,
+   "count_m45": 4,
+   "max_magnitude": 5.3,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 1,
+   "nearest": {
+    "name": "San Francisco Volcanic Field",
+    "distance_km": 13.5,
+    "last_eruption_year": 1075,
+    "type": "Volcanic field"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 10.17,
+   "warmest_month_mean_max_c": 37.0,
+   "coldest_month_mean_min_c": -21.21,
+   "annual_range_c": 58.21
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "volcanic: mafic rocks",
+     "share": 0.81
+    },
+    {
+     "lith": "volcanic: intermediate rocks",
+     "share": 0.12
+    },
+    {
+     "lith": "sedimentary",
+     "share": 0.06
+    }
+   ],
+   "units": [
+    "Tertiary-Quaternary volcanic: mafic rocks",
+    "Pliocene volcanic: intermediate rocks",
+    "Permian sedimentary"
+   ]
+  }
+ },
+ "khaybar": {
+  "region": "khaybar",
+  "retrieved": "2026-11-14",
+  "center": [
+   25.7,
+   39.9
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 1,
+   "count_m45": 0,
+   "max_magnitude": 3.7,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 1,
+   "nearest": {
+    "name": "Khaybar, Harrat",
+    "distance_km": 24.4,
+    "last_eruption_year": 650,
+    "type": "Volcanic field"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 22.95,
+   "warmest_month_mean_max_c": 43.76,
+   "coldest_month_mean_min_c": -5.75,
+   "annual_range_c": 49.51
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "volcanic",
+     "share": 1.0
+    }
+   ],
+   "units": []
+  }
+ },
+ "undara": {
+  "region": "undara",
+  "retrieved": "2026-11-14",
+  "center": [
+   -18.2,
+   144.6
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 0,
+   "count_m45": 0,
+   "max_magnitude": null,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 1,
+   "nearest": {
+    "name": "McBride Volcanic Province",
+    "distance_km": 18.9,
+    "last_eruption_year": -5050,
+    "type": "Volcanic field"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 23.55,
+   "warmest_month_mean_max_c": 42.83,
+   "coldest_month_mean_min_c": 3.31,
+   "annual_range_c": 39.52
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 16,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "ok",
+   "lithology": [
+    {
+     "lith": "igneous mafic volcanic",
+     "share": 0.69
+    },
+    {
+     "lith": "igneous felsic intrusive",
+     "share": 0.31
+    }
+   ],
+   "units": [
+    "Cenozoic mafic volcanics",
+    "Carboniferous to Permian granites",
+    "Silurian granites"
+   ]
+  }
+ },
+ "jingpo": {
+  "region": "jingpo",
+  "retrieved": "2026-11-14",
+  "center": [
+   43.9,
+   128.9
+  ],
+  "seismicity": {
+   "radius_km": 100,
+   "since": "1990-01-01",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+   "status": "ok",
+   "count_m25": 0,
+   "count_m45": 0,
+   "max_magnitude": null,
+   "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+  },
+  "volcanoes": {
+   "radius_km": 100,
+   "source": "https://volcano.si.edu/",
+   "status": "ok",
+   "count_within_radius": 1,
+   "nearest": {
+    "name": "Jingpohu",
+    "distance_km": 20.8,
+    "last_eruption_year": -520,
+    "type": "Volcanic field"
+   }
+  },
+  "temperature": {
+   "source": "https://power.larc.nasa.gov/",
+   "status": "ok",
+   "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+   "annual_mean_c": 3.26,
+   "warmest_month_mean_max_c": 36.16,
+   "coldest_month_mean_min_c": -41.56,
+   "annual_range_c": 77.72
+  },
+  "composition": {
+   "source": "https://macrostrat.org/",
+   "samples": 16,
+   "samples_with_data": 0,
+   "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+   "status": "sin_dato"
+  }
+ }
+}

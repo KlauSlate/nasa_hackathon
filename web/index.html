@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analog Mission Designer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">◐</div>
+    <div>
+      <h1>Analog Mission Designer</h1>
+      <p>Análogos terrestres para misiones lunares</p>
+    </div>
+  </div>
+  <nav class="steps" id="steps" aria-label="Pasos">
+    <button data-step="1" class="on"><span>1</span>Luna ↔ Tierra</button>
+    <button data-step="2"><span>2</span>Regiones</button>
+    <button data-step="3"><span>3</span>Detalle</button>
+    <button data-step="4"><span>4</span>Validación</button>
+  </nav>
+  <div class="exp"><b>Experimento 01</b> · Lunar Rover Terrain Analog</div>
+</header>
+
+<div class="banner" role="note">
+  Resultados preliminares calculados con datos reales (NASA LOLA y Copernicus DEM). El puntaje compara solo topografía
+  (similitud morfológica relativa); temperatura, composición y actividad sísmica y volcánica son contexto, no puntaje.
+  No certifica aptitud para rovers ni está validado por NASA.
+</div>
+
+<main>
+  <!-- PASO 1 -->
+  <section id="s1" class="view on">
+    <h2>1. Seleccionar referencia lunar y comparar</h2>
+    <p class="lead">Haz clic en Site01: a la derecha se actualizan al instante las ventanas terrestres más parecidas.</p>
+    <div class="grid2e">
+      <div class="card">
+        <div class="cardhead"><b><span class="dot m"></span>Luna · Connecting Ridge (LOLA Site01)</b>
+          <label class="chk"><input type="checkbox" id="heat"> Mostrar qué tan fácil es igualar cada zona</label></div>
+        <div class="canvaswrap"><canvas id="moon" width="900" height="900" aria-label="Mapa sombreado de Site01"></canvas></div>
+        <div class="legend" id="heatlegend" hidden>
+          <span>Más fácil de igualar</span><i></i><span>Más difícil</span>
+        </div>
+        <p class="note">Vista sombreada del DEM (no es una fotografía). ~90 % de los píxeles de LOLA Site01 son interpolados.</p>
+      </div>
+      <div class="card">
+        <div class="cardhead"><b><span class="dot e"></span>Tierra · <span id="nreg">varias</span> regiones</b>
+          <label class="chk">Región <select id="regionsel" aria-label="Filtrar por región"></select></label></div>
+        <div id="map1" class="map sq"></div>
+        <p class="note">Imagen satelital Esri solo como contexto; las métricas salen del DEM. Los contornos punteados son las regiones analizadas.</p>
+      </div>
+    </div>
+    <div class="warn" id="rangewarn1" hidden role="alert"></div>
+    <div class="grid2e">
+      <aside class="card">
+        <div class="cardhead"><b>Resumen topográfico lunar</b><span class="tag" id="winpos"></span></div>
+        <dl class="metrics" id="moonmetrics"></dl>
+        <h3>Distribución de pendientes</h3>
+        <div id="moonslope" class="bars"></div>
+        <p class="note" id="moonquality"></p>
+      </aside>
+      <div class="card">
+        <div class="cardhead"><b>Candidatos terrestres</b><span class="tag" title="Menor D = más parecida">ordenado por distancia D</span></div>
+        <div id="cards1"></div>
+        <p class="note" id="robust1"></p>
+        <button class="primary" data-go="3">Ver comparación detallada →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASO 2 -->
+  <section id="s2" class="view">
+    <h2>2. Regiones analizadas</h2>
+    <p class="lead">Todas se procesaron con el mismo método y una normalización conjunta, de modo que D es comparable entre regiones. Los parámetros son de solo lectura.</p>
+    <div class="grid2e">
+      <div class="card"><div id="map2" class="map sq"></div></div>
+      <aside class="card">
+        <div class="cardhead"><b>Configuración del análisis</b></div>
+        <dl class="metrics" id="cfg"></dl>
+      </aside>
+    </div>
+    <div class="card">
+      <div class="cardhead"><b>Catálogo de regiones</b><span class="tag">coordenadas aproximadas, por verificar</span></div>
+      <div class="tablewrap"><table id="regtable"><thead><tr><th>Región</th><th>Estado</th><th>Tipo</th><th>Ventanas útiles</th><th>Referencia</th></tr></thead><tbody></tbody></table></div>
+      <p class="note">"Conocida" = ya usada o citada como análogo. "Candidata" = no catalogada en nuestra lista; requiere revisión de literatura antes de llamarla análogo.</p>
+    </div>
+  </section>
+
+  <!-- PASO 3 -->
+  <section id="s3" class="view">
+    <h2>3. Resultados de la búsqueda</h2>
+    <p class="lead" id="reslead"></p>
+    <div class="warn" id="rangewarn" hidden role="alert"></div>
+    <div class="grid3">
+      <div class="card"><div id="map3" class="map"></div></div>
+      <div class="card"><div class="cardhead"><b>Ranking de candidatos</b>
+        <span class="tag" title="Menor D = más parecida">ordenado por distancia D</span></div>
+        <div id="cards"></div></div>
+    </div>
+
+    <div class="card" id="compare">
+      <div class="cardhead"><b id="cmptitle">Comparación</b>
+        <span class="actions"><button id="exp-geo">Exportar GeoJSON</button><button id="exp-csv">Exportar CSV</button></span></div>
+      <div class="side">
+        <section class="panel moon" aria-labelledby="hm">
+          <h3 id="hm">Luna · referencia</h3>
+          <canvas id="cmpmoon" width="400" height="400" aria-label="Relieve sombreado de la ventana lunar"></canvas>
+          <p class="cap" id="cmpmooncap"></p>
+          <dl class="metrics" id="sidemoon"></dl>
+        </section>
+        <section class="panel earth" aria-labelledby="he">
+          <h3 id="he">Tierra · candidato</h3>
+          <img id="cmpearth" alt="Relieve sombreado del candidato" width="400" height="400">
+          <p class="cap" id="cmpearthcap"></p>
+          <dl class="metrics" id="sideearth"></dl>
+        </section>
+      </div>
+      <h3>Comparación métrica a métrica (puntaje)</h3>
+      <div class="tablewrap"><table id="cmptable">
+        <thead><tr><th>Métrica</th><th class="m">Luna</th><th class="e">Candidato</th><th>Diferencia</th><th>¿Parecida?</th></tr></thead>
+        <tbody></tbody></table></div>
+      <div class="grid2b">
+        <div><h3>Gráfico de métricas</h3><div id="cmpbars"></div></div>
+        <div><h3>Distancias por dimensión</h3><div id="cmpcomp" class="comp"></div></div>
+      </div>
+
+      <h3>Contexto ambiental (no entra en el puntaje)</h3>
+      <div class="tablewrap"><table id="ctxtable">
+        <thead><tr><th>Variable</th><th class="m">Luna</th><th class="e">Región del candidato</th></tr></thead>
+        <tbody></tbody></table></div>
+      <p class="note" id="ctxnote"></p>
+
+      <div class="grid2b">
+        <div><h3>Qué coincide</h3><ul id="matches"></ul><h3>Qué difiere</h3><ul id="diffs"></ul></div>
+        <div><h3>Validación pendiente en terreno</h3><ul id="pending"></ul></div>
+      </div>
+    </div>
+    <p class="note" id="sensnote"></p>
+  </section>
+  <!-- PASO 4 -->
+  <section id="s4" class="view">
+    <h2>4. Validación del método</h2>
+    <p class="lead">No existe una "verdad de terreno" de análogos a escala de ventana, así que no medimos exactitud: medimos si el método discrimina mejor que el azar y si su conclusión sobrevive a cambios razonables. Los umbrales los fijó el equipo antes de ver los resultados; no son normas de NASA.</p>
+    <div class="card">
+      <div class="tablewrap"><table id="valtable"><thead><tr><th>Prueba</th><th>Qué mide</th><th>Resultado</th><th>Criterio</th><th>Estado</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="grid2e" style="margin-top:1rem">
+      <div class="card"><h3>Cómo leerlo</h3><ul id="valread"></ul></div>
+      <div class="card"><h3>Lo que esta validación NO demuestra</h3><ul id="valnot"></ul></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Fuentes: <a id="src-moon" target="_blank" rel="noopener">NASA/PGDA · LOLA Site01</a> ·
+  <a id="src-earth" target="_blank" rel="noopener">Copernicus DEM GLO-30 (ESA)</a> ·
+  <a href="https://earthquake.usgs.gov/fdsnws/event/1/" target="_blank" rel="noopener">USGS</a> ·
+  <a href="https://volcano.si.edu/" target="_blank" rel="noopener">Smithsonian GVP</a> ·
+  <a href="https://power.larc.nasa.gov/" target="_blank" rel="noopener">NASA POWER</a> ·
+  <a href="https://macrostrat.org/" target="_blank" rel="noopener">Macrostrat</a></span>
+  <span id="status"></span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+ "region": "haughton",
+ "retrieved": "2026-11-14",
+ "center": [
+  75.38,
+  -89.67
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 0,
+  "count_m45": 0,
+  "max_magnitude": null,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 0,
+  "nearest": null
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": -14.42,
+  "warmest_month_mean_max_c": 16.81,
+  "coldest_month_mean_min_c": -48.55,
+  "annual_range_c": 65.36
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 16,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "ok",
+  "lithology": [
+   {
+    "lith": "limestone, dolostone, shale, evaporites, chalk; carbonate reefs",
+    "share": 0.56
+   },
+   {
+    "lith": "sedimentary",
+    "share": 0.44
+   }
+  ],
+  "units": [
+   "Sedimentary; Carbonate",
+   "Silurian sedimentary",
+   "Ordovician-Silurian sedimentary"
+  ]
+ }
+}

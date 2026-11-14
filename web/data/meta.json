@@ -1,0 +1,411 @@
+{
+ "experiment": "Experimento 01 · Lunar Rover Terrain Analog",
+ "lunar": {
+  "site": "Site01 · Connecting Ridge",
+  "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+  "bounds": [
+   -19000.0,
+   -20000.0,
+   -3000.0,
+   -4000.0
+  ],
+  "image": "data/img/lunar_site01.png",
+  "window_m": 2970.0,
+  "source_url": "https://pgda.gsfc.nasa.gov/products/78"
+ },
+ "earth": {
+  "dataset": "Copernicus DEM GLO-30 (ESA, ~30 m)",
+  "source_url": "https://doi.org/10.5270/ESA-c5d3d65",
+  "windows_total": 21123,
+  "windows_usable": 20241,
+  "ranges": {
+   "slope_p50_deg": [
+    0.0,
+    26.201811037108417
+   ],
+   "slope_p90_deg": [
+    0.0,
+    38.823406400742094
+   ],
+   "roughness_270m_m": [
+    0.0,
+    10.084519264717022
+   ],
+   "relief_p95_p5_m": [
+    0.0,
+    1129.1308837890624
+   ]
+  }
+ },
+ "regions": {
+  "haughton": {
+   "id": "haughton",
+   "name": "Cráter Haughton (isla Devon, Canadá)",
+   "short": "Haughton",
+   "status": "known",
+   "type": "polar · cráter de impacto",
+   "center": [
+    75.38,
+    -89.67
+   ],
+   "roi": {
+    "south": 75.1,
+    "north": 75.65,
+    "west": -91.0,
+    "east": -88.3
+   },
+   "reference": "Análogo documentado (Haughton-Mars Project; NASA Planetary Analogs).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 2050,
+   "windows_usable": 1837,
+   "utm": "EPSG:32616"
+  },
+  "atacama": {
+   "id": "atacama",
+   "name": "Desierto de Atacama (Chile)",
+   "short": "Atacama",
+   "status": "known",
+   "type": "desértico · volcánico",
+   "center": [
+    -23.25,
+    -68.5
+   ],
+   "roi": {
+    "south": -24.0,
+    "north": -22.5,
+    "west": -69.0,
+    "east": -68.0
+   },
+   "reference": "Análogo citado por NASA (Planetary Analogs, Marte).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 7062,
+   "windows_usable": 6974,
+   "utm": "EPSG:32719"
+  },
+  "etna": {
+   "id": "etna",
+   "name": "Etna (Sicilia, Italia)",
+   "short": "Etna",
+   "status": "known",
+   "type": "volcánico basáltico",
+   "center": [
+    37.75,
+    15.0
+   ],
+   "roi": {
+    "south": 37.5,
+    "north": 38.0,
+    "west": 14.7,
+    "east": 15.3
+   },
+   "reference": "ESA y DLR probaron rovers lunares en el Etna en 2022 (ANSA).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 1155,
+   "windows_usable": 1138,
+   "utm": "EPSG:32633"
+  },
+  "lanzarote": {
+   "id": "lanzarote",
+   "name": "Lanzarote (España)",
+   "short": "Lanzarote",
+   "status": "known",
+   "type": "volcánico basáltico",
+   "center": [
+    29.03,
+    -13.63
+   ],
+   "roi": {
+    "south": 28.8,
+    "north": 29.25,
+    "west": -13.95,
+    "east": -13.3
+   },
+   "reference": "La ESA entrena allí a astronautas (Phys.org/AFP 2022).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 1280,
+   "windows_usable": 1198,
+   "utm": "EPSG:32628"
+  },
+  "askja": {
+   "id": "askja",
+   "name": "Askja (Islandia)",
+   "short": "Askja",
+   "status": "known",
+   "type": "volcánico basáltico",
+   "center": [
+    65.03,
+    -16.75
+   ],
+   "roi": {
+    "south": 64.8,
+    "north": 65.3,
+    "west": -17.4,
+    "east": -16.1
+   },
+   "reference": "Astronautas de Apolo entrenaron allí en 1965 y 1967 (Hey Iceland).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 1440,
+   "windows_usable": 1318,
+   "utm": "EPSG:32628"
+  },
+  "cinder_lake": {
+   "id": "cinder_lake",
+   "name": "Cinder Lake / Flagstaff (Arizona, EE. UU.)",
+   "short": "Cinder Lake",
+   "status": "known",
+   "type": "volcánico basáltico",
+   "center": [
+    35.45,
+    -111.6
+   ],
+   "roi": {
+    "south": 35.2,
+    "north": 35.75,
+    "west": -111.95,
+    "east": -111.3
+   },
+   "reference": "Campo de cráteres artificiales para entrenamiento de Apolo (Apollo program training).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 1443,
+   "windows_usable": 1379,
+   "utm": "EPSG:32612"
+  },
+  "khaybar": {
+   "id": "khaybar",
+   "name": "Harrat Khaybar (Arabia Saudita)",
+   "short": "Khaybar",
+   "status": "candidate",
+   "type": "volcánico · hiperárido",
+   "center": [
+    25.7,
+    39.9
+   ],
+   "roi": {
+    "south": 25.3,
+    "north": 26.1,
+    "west": 39.5,
+    "east": 40.3
+   },
+   "reference": "Campo de lava reciente en entorno hiperárido; solo notas divulgativas, falta estudio científico.",
+   "coords": "aproximadas, verificar",
+   "windows_total": 2907,
+   "windows_usable": 2821,
+   "utm": "EPSG:32637"
+  },
+  "undara": {
+   "id": "undara",
+   "name": "Undara (Queensland, Australia)",
+   "short": "Undara",
+   "status": "candidate",
+   "type": "volcánico · tubos de lava",
+   "center": [
+    -18.2,
+    144.6
+   ],
+   "roi": {
+    "south": -18.5,
+    "north": -17.9,
+    "west": 144.3,
+    "east": 145.0
+   },
+   "reference": "Tubos de lava terrestres muy estudiados (Sauro et al.).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 2064,
+   "windows_usable": 1912,
+   "utm": "EPSG:32755"
+  },
+  "jingpo": {
+   "id": "jingpo",
+   "name": "Lago Jingpo (China)",
+   "short": "Jingpo",
+   "status": "candidate",
+   "type": "volcánico · tubos de lava",
+   "center": [
+    43.9,
+    128.9
+   ],
+   "roi": {
+    "south": 43.6,
+    "north": 44.2,
+    "west": 128.5,
+    "east": 129.3
+   },
+   "reference": "Propuesto como análogo del complejo Marius Hills (Remote Sensing).",
+   "coords": "aproximadas, verificar",
+   "windows_total": 1722,
+   "windows_usable": 1664,
+   "utm": "EPSG:32652"
+  }
+ },
+ "params": {
+  "analysis_scale_m": 90.0,
+  "window_size_m": 3000.0,
+  "step_m": 1500.0,
+  "actual_window_m": 2970.0,
+  "actual_step_m": 1530.0,
+  "roughness_window_m": 270,
+  "min_coverage": 0.95,
+  "weights": {
+   "slope": 0.45,
+   "rough": 0.35,
+   "relief": 0.2
+  },
+  "processing_version": "v1-experimental",
+  "normalization": "MAD robusta sobre todas las regiones (conjunta)"
+ },
+ "scales": {
+  "slope_p50_deg": 1.8896985402237625,
+  "slope_p90_deg": 4.612839997477489,
+  "roughness_270m_m": 0.7259477726389775,
+  "relief_p95_p5_m": 74.0887905249028
+ },
+ "weights": {
+  "slope": 0.45,
+  "rough": 0.35,
+  "relief": 0.2
+ },
+ "slope_class_labels": [
+  "0-5°",
+  "5-15°",
+  ">15°"
+ ],
+ "pending_validation": [
+  "Rocas y obstáculos menores a la resolución del DEM (~30 m en el DEM terrestre; LOLA ~90 % interpolado).",
+  "Resistencia y composición del suelo, adherencia y hundimiento.",
+  "Estabilidad del terreno y pendientes locales a escala de rover.",
+  "Accesibilidad, propiedad del terreno, permisos y seguridad física.",
+  "Gravedad, vacío, iluminación y polvo lunar: no reproducibles en la Tierra."
+ ],
+ "moon_context": {
+  "composition": {
+   "status": "cualitativo",
+   "text": "Tierras altas del polo sur. Según la literatura revisada, el impacto de Shackleton expuso anortosita muy pura (PAN) y un terreno estratificado de eyectas, cerca de Connecting Ridge.",
+   "caveat": "Descripción cualitativa de la literatura; no está mapeada con datos propios. Los mapas de FeO y plagioclasa (Lemelin et al. 2022) son de ~1 km por píxel con incertidumbre de 9 wt %, y no se han incorporado.",
+   "sources": [
+    "https://boris.unibe.ch/179288/1/Boazman_2022_Planet._Sci._J._3_275.pdf"
+   ]
+  },
+  "temperature": {
+   "status": "pendiente",
+   "text": "Sin dato incorporado. LRO Diviner publica productos polares (Polar Cumulative Product, GDR L2), pero aún no se han descargado ni procesado.",
+   "sources": [
+    "https://ode.rsl.wustl.edu/moon/pagehelp/Content/Missions_Instruments/LRO/DIVINER/PCP.htm"
+   ]
+  },
+  "seismic_volcanic": {
+   "status": "no_comparable",
+   "text": "La Luna no tiene volcanismo activo. Por eso la actividad sísmica y volcánica terrestre se muestra solo como contexto de riesgo, nunca como similitud.",
+   "sources": []
+  }
+ },
+ "reference_window": {
+  "center": [
+   -11575.0,
+   -9805.0
+  ],
+  "sensitivity_weights": {
+   "equal": {
+    "weights": {
+     "slope": 0.3333333333333333,
+     "rough": 0.3333333333333333,
+     "relief": 0.3333333333333333
+    },
+    "top_windows": [
+     [
+      272,
+      238
+     ],
+     [
+      272,
+      272
+     ],
+     [
+      323,
+      255
+     ]
+    ],
+    "overlap_with_base": 3,
+    "k": 3
+   },
+   "slope_heavy": {
+    "weights": {
+     "slope": 0.6,
+     "rough": 0.25,
+     "relief": 0.15
+    },
+    "top_windows": [
+     [
+      272,
+      238
+     ],
+     [
+      272,
+      272
+     ],
+     [
+      323,
+      255
+     ]
+    ],
+    "overlap_with_base": 3,
+    "k": 3
+   },
+   "rough_heavy": {
+    "weights": {
+     "slope": 0.25,
+     "rough": 0.55,
+     "relief": 0.2
+    },
+    "top_windows": [
+     [
+      272,
+      238
+     ],
+     [
+      272,
+      272
+     ],
+     [
+      323,
+      255
+     ]
+    ],
+    "overlap_with_base": 3,
+    "k": 3
+   },
+   "relief_heavy": {
+    "weights": {
+     "slope": 0.25,
+     "rough": 0.25,
+     "relief": 0.5
+    },
+    "top_windows": [
+     [
+      272,
+      238
+     ],
+     [
+      272,
+      272
+     ],
+     [
+      323,
+      255
+     ]
+    ],
+    "overlap_with_base": 3,
+    "k": 3
+   },
+   "stable": true
+  },
+  "control_median_D": 4.631249485184886,
+  "all_windows_median_D": 4.465109458538779,
+  "best_D": [
+   0.8827890296913021,
+   1.2110770769030839,
+   1.3139827237304573
+  ]
+ },
+ "skipped_regions": [],
+ "status": "Resultados preliminares; sin validación completa."
+}

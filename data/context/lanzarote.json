@@ -1,0 +1,59 @@
+{
+ "region": "lanzarote",
+ "retrieved": "2026-11-14",
+ "center": [
+  29.03,
+  -13.63
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 9,
+  "count_m45": 0,
+  "max_magnitude": 4.3,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 2,
+  "nearest": {
+   "name": "Lanzarote",
+   "distance_km": 0.0,
+   "last_eruption_year": 1824,
+   "type": "Fissure vent(s)"
+  }
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": 20.12,
+  "warmest_month_mean_max_c": 28.47,
+  "coldest_month_mean_min_c": 13.0,
+  "annual_range_c": 15.47
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 16,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "ok",
+  "lithology": [
+   {
+    "lith": "tholeiitic basalt",
+    "share": 0.75
+   },
+   {
+    "lith": "volcanic",
+    "share": 0.25
+   }
+  ],
+  "units": [
+   "North Atlantic Ocean"
+  ]
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "region": "etna",
+ "retrieved": "2026-11-14",
+ "center": [
+  37.75,
+  15.0
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 575,
+  "count_m45": 24,
+  "max_magnitude": 5.6,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 4,
+  "nearest": {
+   "name": "Etna",
+   "distance_km": 0.2,
+   "last_eruption_year": 2026,
+   "type": "Stratovolcano(es)"
+  }
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": 16.51,
+  "warmest_month_mean_max_c": 39.87,
+  "coldest_month_mean_min_c": -0.22,
+  "annual_range_c": 40.09
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 16,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "ok",
+  "lithology": [
+   {
+    "lith": "Major:{alkali basalt}, Minor{tuff group,tephrite, basanite,phonolite}",
+    "share": 0.38
+   },
+   {
+    "lith": "Major:{sandstone}, Minor{claystone,limestone}",
+    "share": 0.12
+   },
+   {
+    "lith": "sin clasificar",
+    "share": 0.12
+   }
+  ],
+  "units": [
+   "Quaternary alkali",
+   "Oligocene sandstone",
+   "submarine continental crust"
+  ]
+ }
+}

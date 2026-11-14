@@ -1,0 +1,46 @@
+{
+ "region": "jingpo",
+ "retrieved": "2026-11-14",
+ "center": [
+  43.9,
+  128.9
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 0,
+  "count_m45": 0,
+  "max_magnitude": null,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 1,
+  "nearest": {
+   "name": "Jingpohu",
+   "distance_km": 20.8,
+   "last_eruption_year": -520,
+   "type": "Volcanic field"
+  }
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": 3.26,
+  "warmest_month_mean_max_c": 36.16,
+  "coldest_month_mean_min_c": -41.56,
+  "annual_range_c": 77.72
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 0,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "sin_dato"
+ }
+}

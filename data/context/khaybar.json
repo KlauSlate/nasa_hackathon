@@ -1,0 +1,53 @@
+{
+ "region": "khaybar",
+ "retrieved": "2026-11-14",
+ "center": [
+  25.7,
+  39.9
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 1,
+  "count_m45": 0,
+  "max_magnitude": 3.7,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 1,
+  "nearest": {
+   "name": "Khaybar, Harrat",
+   "distance_km": 24.4,
+   "last_eruption_year": 650,
+   "type": "Volcanic field"
+  }
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": 22.95,
+  "warmest_month_mean_max_c": 43.76,
+  "coldest_month_mean_min_c": -5.75,
+  "annual_range_c": 49.51
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 16,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "ok",
+  "lithology": [
+   {
+    "lith": "volcanic",
+    "share": 1.0
+   }
+  ],
+  "units": []
+ }
+}

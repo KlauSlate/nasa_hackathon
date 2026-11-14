@@ -1,0 +1,8 @@
+numpy
+scipy
+pandas
+rasterio
+matplotlib
+requests
+python-dotenv
+pytest

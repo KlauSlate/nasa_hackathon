@@ -1,0 +1,323 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.18678845104674,
+              75.48157008796154
+            ],
+            [
+              -89.08072499069281,
+              75.48252949903181
+            ],
+            [
+              -89.07700123464224,
+              75.4559289364389
+            ],
+            [
+              -89.18287523809121,
+              75.45497135455541
+            ],
+            [
+              -89.18678845104674,
+              75.48157008796154
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "candidate_id": "candidate-001",
+        "experiment_id": "lunar-rover-terrain-analog-v1",
+        "source_body": "Earth",
+        "reference_site": "Moon / LOLA / Site01 Connecting Ridge",
+        "center": {
+          "latitude": 75.46875593761612,
+          "longitude": -89.13184747862415
+        },
+        "area_km2": 9.0,
+        "metrics": {
+          "slope_p50_deg": 6.533560701684969,
+          "slope_p90_deg": 20.62086375657542,
+          "roughness_270m_m": 1.5938031664929988,
+          "relief_p95_p5_m": 350.2665637969971
+        },
+        "ranking": {
+          "position": 1,
+          "normalized_distance": 4.219510924806958,
+          "component_distances": {
+            "slope": 3.9108723679117148,
+            "roughness": 1.0466449939907176,
+            "relief": 10.466463056749678
+          }
+        },
+        "data_quality": {
+          "valid_coverage_fraction": 1.0,
+          "lunar_lola_uncertainty_assessed": true,
+          "warnings": [
+            "Referencia lunar con alta proporci\u00f3n de p\u00edxeles interpolados: no inferir obst\u00e1culos peque\u00f1os.",
+            "Copernicus DEM GLO-30 (ESA, ~30 m): no resuelve rocas ni irregularidades menores.",
+            "Acceso, permisos y propiedades del suelo sin evaluar."
+          ]
+        },
+        "processing": {
+          "analysis_scale_m": 90.0,
+          "window_size_m": 3000.0,
+          "processing_version": "v1-experimental"
+        },
+        "evidence": {
+          "lunar_dataset_url": "https://pgda.gsfc.nasa.gov/products/78",
+          "earth_dataset_url": "https://doi.org/10.5270/ESA-c5d3d65"
+        },
+        "similarity_percentile": 99.94556341861731,
+        "slope_classes": {
+          "labels": [
+            "0-5\u00b0",
+            "5-15\u00b0",
+            ">15\u00b0"
+          ],
+          "fractions": [
+            0.405,
+            0.3673,
+            0.2277
+          ]
+        },
+        "comparison": {
+          "matches": [
+            "pendiente P90: Luna 19.4\u00b0 vs. candidato 20.6\u00b0"
+          ],
+          "differences": [
+            "pendiente mediana: Luna 16.9\u00b0 vs. candidato 6.5\u00b0",
+            "rugosidad (270 m): Luna 0.9 m vs. candidato 1.6 m",
+            "relieve local P95\u2013P5: Luna 791.1 m vs. candidato 350.3 m"
+          ]
+        },
+        "hillshade": "data\\outputs\\img\\candidate-001.png",
+        "pending_validation": [
+          "Rocas y obst\u00e1culos menores a la resoluci\u00f3n del DEM (~30 m en el DEM terrestre; LOLA ~90 % interpolado).",
+          "Resistencia y composici\u00f3n del suelo, adherencia y hundimiento.",
+          "Estabilidad del terreno y pendientes locales a escala de rover.",
+          "Accesibilidad, propiedad del terreno, permisos y seguridad f\u00edsica.",
+          "Gravedad, vac\u00edo, iluminaci\u00f3n y polvo lunar: no reproducibles en la Tierra."
+        ],
+        "status": "computed"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.67329389687748,
+              75.29372513632842
+            ],
+            [
+              -88.56852543391875,
+              75.29445341348556
+            ],
+            [
+              -88.56575548791066,
+              75.26784485672535
+            ],
+            [
+              -88.67033913774465,
+              75.26711795229609
+            ],
+            [
+              -88.67329389687748,
+              75.29372513632842
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "candidate_id": "candidate-002",
+        "experiment_id": "lunar-rover-terrain-analog-v1",
+        "source_body": "Earth",
+        "reference_site": "Moon / LOLA / Site01 Connecting Ridge",
+        "center": {
+          "latitude": 75.28079122875104,
+          "longitude": -88.61947848911716
+        },
+        "area_km2": 9.0,
+        "metrics": {
+          "slope_p50_deg": 6.684748496586009,
+          "slope_p90_deg": 19.982055619227204,
+          "roughness_270m_m": 1.3261514761427176,
+          "relief_p95_p5_m": 308.0438415527343
+        },
+        "ranking": {
+          "position": 2,
+          "normalized_distance": 4.221628593937263,
+          "component_distances": {
+            "slope": 3.778216112891085,
+            "roughness": 0.6504535234642094,
+            "relief": 11.468863049619005
+          }
+        },
+        "data_quality": {
+          "valid_coverage_fraction": 1.0,
+          "lunar_lola_uncertainty_assessed": true,
+          "warnings": [
+            "Referencia lunar con alta proporci\u00f3n de p\u00edxeles interpolados: no inferir obst\u00e1culos peque\u00f1os.",
+            "Copernicus DEM GLO-30 (ESA, ~30 m): no resuelve rocas ni irregularidades menores.",
+            "Acceso, permisos y propiedades del suelo sin evaluar."
+          ]
+        },
+        "processing": {
+          "analysis_scale_m": 90.0,
+          "window_size_m": 3000.0,
+          "processing_version": "v1-experimental"
+        },
+        "evidence": {
+          "lunar_dataset_url": "https://pgda.gsfc.nasa.gov/products/78",
+          "earth_dataset_url": "https://doi.org/10.5270/ESA-c5d3d65"
+        },
+        "similarity_percentile": 99.89112683723462,
+        "slope_classes": {
+          "labels": [
+            "0-5\u00b0",
+            "5-15\u00b0",
+            ">15\u00b0"
+          ],
+          "fractions": [
+            0.3673,
+            0.4252,
+            0.2075
+          ]
+        },
+        "comparison": {
+          "matches": [
+            "pendiente P90: Luna 19.4\u00b0 vs. candidato 20.0\u00b0",
+            "rugosidad (270 m): Luna 0.9 m vs. candidato 1.3 m"
+          ],
+          "differences": [
+            "pendiente mediana: Luna 16.9\u00b0 vs. candidato 6.7\u00b0",
+            "relieve local P95\u2013P5: Luna 791.1 m vs. candidato 308.0 m"
+          ]
+        },
+        "hillshade": "data\\outputs\\img\\candidate-002.png",
+        "pending_validation": [
+          "Rocas y obst\u00e1culos menores a la resoluci\u00f3n del DEM (~30 m en el DEM terrestre; LOLA ~90 % interpolado).",
+          "Resistencia y composici\u00f3n del suelo, adherencia y hundimiento.",
+          "Estabilidad del terreno y pendientes locales a escala de rover.",
+          "Accesibilidad, propiedad del terreno, permisos y seguridad f\u00edsica.",
+          "Gravedad, vac\u00edo, iluminaci\u00f3n y polvo lunar: no reproducibles en la Tierra."
+        ],
+        "status": "computed"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -88.78122582607367,
+              75.29292557606378
+            ],
+            [
+              -88.67646853311503,
+              75.29370233274388
+            ],
+            [
+              -88.67350817447954,
+              75.26709519169184
+            ],
+            [
+              -88.77808071465746,
+              75.26631989896794
+            ],
+            [
+              -88.78122582607367,
+              75.29292557606378
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "candidate_id": "candidate-003",
+        "experiment_id": "lunar-rover-terrain-analog-v1",
+        "source_body": "Earth",
+        "reference_site": "Moon / LOLA / Site01 Connecting Ridge",
+        "center": {
+          "latitude": 75.2800166385446,
+          "longitude": -88.72732081208596
+        },
+        "area_km2": 9.0,
+        "metrics": {
+          "slope_p50_deg": 5.880521776284111,
+          "slope_p90_deg": 24.34847044499234,
+          "roughness_270m_m": 1.2447455222743804,
+          "relief_p95_p5_m": 331.56174774169915
+        },
+        "ranking": {
+          "position": 3,
+          "normalized_distance": 4.4384771704613595,
+          "component_distances": {
+            "slope": 4.601973082003315,
+            "roughness": 0.5299523432530914,
+            "relief": 10.910529817106429
+          }
+        },
+        "data_quality": {
+          "valid_coverage_fraction": 1.0,
+          "lunar_lola_uncertainty_assessed": true,
+          "warnings": [
+            "Referencia lunar con alta proporci\u00f3n de p\u00edxeles interpolados: no inferir obst\u00e1culos peque\u00f1os.",
+            "Copernicus DEM GLO-30 (ESA, ~30 m): no resuelve rocas ni irregularidades menores.",
+            "Acceso, permisos y propiedades del suelo sin evaluar."
+          ]
+        },
+        "processing": {
+          "analysis_scale_m": 90.0,
+          "window_size_m": 3000.0,
+          "processing_version": "v1-experimental"
+        },
+        "evidence": {
+          "lunar_dataset_url": "https://pgda.gsfc.nasa.gov/products/78",
+          "earth_dataset_url": "https://doi.org/10.5270/ESA-c5d3d65"
+        },
+        "similarity_percentile": 99.72781709308656,
+        "slope_classes": {
+          "labels": [
+            "0-5\u00b0",
+            "5-15\u00b0",
+            ">15\u00b0"
+          ],
+          "fractions": [
+            0.4591,
+            0.326,
+            0.2149
+          ]
+        },
+        "comparison": {
+          "matches": [
+            "rugosidad (270 m): Luna 0.9 m vs. candidato 1.2 m"
+          ],
+          "differences": [
+            "pendiente mediana: Luna 16.9\u00b0 vs. candidato 5.9\u00b0",
+            "pendiente P90: Luna 19.4\u00b0 vs. candidato 24.3\u00b0",
+            "relieve local P95\u2013P5: Luna 791.1 m vs. candidato 331.6 m"
+          ]
+        },
+        "hillshade": "data\\outputs\\img\\candidate-003.png",
+        "pending_validation": [
+          "Rocas y obst\u00e1culos menores a la resoluci\u00f3n del DEM (~30 m en el DEM terrestre; LOLA ~90 % interpolado).",
+          "Resistencia y composici\u00f3n del suelo, adherencia y hundimiento.",
+          "Estabilidad del terreno y pendientes locales a escala de rover.",
+          "Accesibilidad, propiedad del terreno, permisos y seguridad f\u00edsica.",
+          "Gravedad, vac\u00edo, iluminaci\u00f3n y polvo lunar: no reproducibles en la Tierra."
+        ],
+        "status": "computed"
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+ "region": "cinder_lake",
+ "retrieved": "2026-11-14",
+ "center": [
+  35.45,
+  -111.6
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 83,
+  "count_m45": 4,
+  "max_magnitude": 5.3,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 1,
+  "nearest": {
+   "name": "San Francisco Volcanic Field",
+   "distance_km": 13.5,
+   "last_eruption_year": 1075,
+   "type": "Volcanic field"
+  }
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": 10.17,
+  "warmest_month_mean_max_c": 37.0,
+  "coldest_month_mean_min_c": -21.21,
+  "annual_range_c": 58.21
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 16,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "ok",
+  "lithology": [
+   {
+    "lith": "volcanic: mafic rocks",
+    "share": 0.81
+   },
+   {
+    "lith": "volcanic: intermediate rocks",
+    "share": 0.12
+   },
+   {
+    "lith": "sedimentary",
+    "share": 0.06
+   }
+  ],
+  "units": [
+   "Tertiary-Quaternary volcanic: mafic rocks",
+   "Pliocene volcanic: intermediate rocks",
+   "Permian sedimentary"
+  ]
+ }
+}

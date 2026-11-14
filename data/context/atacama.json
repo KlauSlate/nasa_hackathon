@@ -1,0 +1,65 @@
+{
+ "region": "atacama",
+ "retrieved": "2026-11-14",
+ "center": [
+  -23.25,
+  -68.5
+ ],
+ "seismicity": {
+  "radius_km": 100,
+  "since": "1990-01-01",
+  "source": "https://earthquake.usgs.gov/fdsnws/event/1/",
+  "status": "ok",
+  "count_m25": 876,
+  "count_m45": 318,
+  "max_magnitude": 7.4,
+  "caveat": "El conteo depende de la cobertura de estaciones sísmicas de cada región, no solo de su actividad."
+ },
+ "volcanoes": {
+  "radius_km": 100,
+  "source": "https://volcano.si.edu/",
+  "status": "ok",
+  "count_within_radius": 10,
+  "nearest": {
+   "name": "Licancabur",
+   "distance_km": 78.8,
+   "last_eruption_year": null,
+   "type": "Stratovolcano"
+  }
+ },
+ "temperature": {
+  "source": "https://power.larc.nasa.gov/",
+  "status": "ok",
+  "caveat": "Reanálisis (resolución de decenas de km) en el centro de la región; no es temperatura de superficie.",
+  "annual_mean_c": 12.44,
+  "warmest_month_mean_max_c": 31.24,
+  "coldest_month_mean_min_c": -6.81,
+  "annual_range_c": 38.05
+ },
+ "composition": {
+  "source": "https://macrostrat.org/",
+  "samples": 16,
+  "samples_with_data": 16,
+  "caveat": "Mapa geológico a escala pequeña (compilación global): sirve para el tipo de roca dominante, no para detalle local.",
+  "status": "ok",
+  "lithology": [
+   {
+    "lith": "Siliciclastic",
+    "share": 0.56
+   },
+   {
+    "lith": "Volcaniclastic, volcanic",
+    "share": 0.12
+   },
+   {
+    "lith": "Andesite and related volcanic",
+    "share": 0.12
+   }
+  ],
+  "units": [
+   "Neogene Siliciclastic",
+   "Neogene - Quaternary Siliciclastic",
+   "Neogene Rhyolitic"
+  ]
+ }
+}

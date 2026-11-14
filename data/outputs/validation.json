@@ -1,0 +1,125 @@
+{
+  "criteria_note": "Umbrales definidos por el equipo antes de ver los resultados; no son normas de NASA.",
+  "criteria": {
+    "recovery_lift": 2.0,
+    "noise_rank_pct": 5.0,
+    "stable_ok": 0.8,
+    "stable_partial": 0.5,
+    "slope_unc_ratio": 0.5,
+    "dem_spearman": 0.9,
+    "dem_delta_ratio": 0.5
+  },
+  "v1_discrimination": {
+    "accuracy_same_region": 0.4222222222222222,
+    "chance": 0.10635526200528563,
+    "lift": 3.969923201366743,
+    "per_region": {
+      "askja": 0.075,
+      "atacama": 0.75,
+      "cinder_lake": 0.15,
+      "etna": 0.45,
+      "haughton": 0.55,
+      "jingpo": 0.625,
+      "khaybar": 0.45,
+      "lanzarote": 0.3,
+      "undara": 0.45
+    },
+    "n_queries": 360,
+    "status": "cumple"
+  },
+  "v2_noise_recovery": {
+    "noise_sigma_scales": 0.5,
+    "n_queries": 300,
+    "median_rank": 711.0,
+    "median_rank_pct": 3.5126722987994663,
+    "p90_rank_pct": 24.98147324736921,
+    "windows_total": 20241,
+    "status": "cumple"
+  },
+  "v3_weights_norm": {
+    "weights": {
+      "equal": {
+        "same_set": 0.3744,
+        "same_top1_region": 0.896
+      },
+      "slope_heavy": {
+        "same_set": 0.3504,
+        "same_top1_region": 0.896
+      },
+      "rough_heavy": {
+        "same_set": 0.2096,
+        "same_top1_region": 0.7856
+      },
+      "relief_heavy": {
+        "same_set": 0.1872,
+        "same_top1_region": 0.8304
+      }
+    },
+    "norm": {
+      "std_conjunta": {
+        "same_top1_region": 0.9616,
+        "etna_share": 0.5024
+      },
+      "mad_por_region_mediana": {
+        "same_top1_region": 0.9248,
+        "etna_share": 0.4672
+      },
+      "mad_ventanas_lunares": {
+        "same_top1_region": 0.5248,
+        "etna_share": 0.224
+      }
+    },
+    "base_etna_share": 0.488,
+    "status_weights": "con reservas",
+    "status_norm": "con reservas",
+    "n_lunar_windows": 625
+  },
+  "v4_lola_uncertainty": {
+    "median_slope_uncertainty_deg": 1.8776445388793945,
+    "p90_slope_uncertainty_deg": 1.980475950241089,
+    "tolerance_scale_deg": 1.8896985402237625,
+    "ratio": 0.9936212040768467,
+    "n_windows": 105,
+    "note": "Incertidumbre a 5 m (cota superior: al promediar a 90 m baja, pero no se ha cuantificado).",
+    "status": "con reservas"
+  },
+  "v4_dem_product": {
+    "windows_compared": 6974,
+    "metrics": {
+      "slope_p50_deg": {
+        "spearman": 0.9947395302558237,
+        "median_abs_diff_in_scales": 0.07248454101591391
+      },
+      "slope_p90_deg": {
+        "spearman": 0.9925991820924696,
+        "median_abs_diff_in_scales": 0.09705641441785806
+      },
+      "roughness_270m_m": {
+        "spearman": 0.9298771393539204,
+        "median_abs_diff_in_scales": 0.6524817915413346
+      },
+      "relief_p95_p5_m": {
+        "spearman": 0.9990721099407696,
+        "median_abs_diff_in_scales": 0.010181644183699157
+      }
+    },
+    "worst_spearman": 0.9298771393539204,
+    "worst_median_diff_scales": 0.6524817915413346,
+    "status": "con reservas"
+  },
+  "v3_scale": {
+    "60": {
+      "windows_valid": 625,
+      "same_top1_region": 0.7392,
+      "spearman_bestD": 0.9513946915704106,
+      "windows_earth": 21118
+    },
+    "150": {
+      "windows_valid": 625,
+      "same_top1_region": 0.5776,
+      "spearman_bestD": 0.910938658146965,
+      "windows_earth": 21170
+    },
+    "status": "con reservas"
+  }
+}
