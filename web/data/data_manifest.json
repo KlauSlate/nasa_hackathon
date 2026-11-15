@@ -1,12 +1,12 @@
 [
   {
-    "role": "lunar_dem",
+    "role": "lunar_dem:site01",
     "path": "data\\raw\\Site01_final_adj_5mpp_surf.tif",
     "url": "https://pgda.gsfc.nasa.gov/products/78",
-    "version": "LOLA Site01 5 mpp",
+    "version": "LOLA site01 5 mpp",
     "size_bytes": 40980810,
     "sha256": "3ba7b97cb00a2bcf21189c3aeb535f65afc21207154ab9f0d43c5bdc1f7e747e",
-    "accessed_utc": "2026-11-14T21:14:48+00:00",
+    "accessed_utc": "2026-11-15T03:48:45+00:00",
     "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
     "shape": [
       3200,
@@ -29,13 +29,13 @@
     "max": 1959.4962158203125
   },
   {
-    "role": "lunar_ldec",
+    "role": "lunar_ldec:site01",
     "path": "data\\raw\\Site01_final_adj_5mpp_ldec.tif",
     "url": "https://pgda.gsfc.nasa.gov/products/78",
-    "version": "LOLA Site01 5 mpp",
+    "version": "LOLA site01 5 mpp",
     "size_bytes": 40980744,
     "sha256": "16d6ed21020ad48fa71d94e7437492acf5bf04118f52bcd292f57f22ead4cd23",
-    "accessed_utc": "2026-11-14T21:14:48+00:00",
+    "accessed_utc": "2026-11-15T03:48:46+00:00",
     "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
     "shape": [
       3200,
@@ -58,13 +58,13 @@
     "max": 5.0
   },
   {
-    "role": "lunar_toterr",
+    "role": "lunar_toterr:site01",
     "path": "data\\raw\\Site01_final_adj_5mpp_toterr.tif",
     "url": "https://pgda.gsfc.nasa.gov/products/78",
-    "version": "LOLA Site01 5 mpp",
+    "version": "LOLA site01 5 mpp",
     "size_bytes": 40980810,
     "sha256": "cf2cf52f52d2aa51e60d058010d10b0ebfb1d3e920f5a2b9a46eb6c51054ab1c",
-    "accessed_utc": "2026-11-14T21:14:48+00:00",
+    "accessed_utc": "2026-11-15T03:48:46+00:00",
     "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
     "shape": [
       3200,
@@ -87,13 +87,361 @@
     "max": 5.582818508148193
   },
   {
+    "role": "lunar_dem:site04",
+    "path": "data\\raw\\Site04_final_adj_5mpp_surf.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site04 5 mpp",
+    "size_bytes": 40980806,
+    "sha256": "38ff70dbdf2f066c2cfa94a646c3a59d653ce7f6b4528b15fc1b43ee397ce758",
+    "accessed_utc": "2026-11-15T03:48:48+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -9000.0,
+      -15000.0,
+      7000.0,
+      1000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": -2847.877197265625,
+    "max": 1805.0726318359375
+  },
+  {
+    "role": "lunar_ldec:site04",
+    "path": "data\\raw\\Site04_final_adj_5mpp_ldec.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site04 5 mpp",
+    "size_bytes": 40980740,
+    "sha256": "fcc8c2219ae2368d5b2a1f6aec05fcf96cf725f3035ac8d80efc312a4ff29227",
+    "accessed_utc": "2026-11-15T03:48:48+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -9000.0,
+      -15000.0,
+      7000.0,
+      1000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.0,
+    "max": 5.0
+  },
+  {
+    "role": "lunar_toterr:site04",
+    "path": "data\\raw\\Site04_final_adj_5mpp_toterr.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site04 5 mpp",
+    "size_bytes": 40980808,
+    "sha256": "416c4baa3b64def0182bb3379a1a9228482efd8ce32a39309ea8de5d0330fbe6",
+    "accessed_utc": "2026-11-15T03:48:48+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -9000.0,
+      -15000.0,
+      7000.0,
+      1000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.06385684758424759,
+    "max": 7.635095596313477
+  },
+  {
+    "role": "lunar_dem:site20",
+    "path": "data\\raw\\Site20_final_adj_5mpp_surf.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site20 5 mpp",
+    "size_bytes": 40980802,
+    "sha256": "e51451f3629ba7cd5cfc1b32c8c0ee3c5c454607488b00ea00cd06a9e301a892",
+    "accessed_utc": "2026-11-15T03:48:50+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      65000.0,
+      110000.0,
+      81000.0,
+      126000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 2796.344970703125,
+    "max": 6463.86376953125
+  },
+  {
+    "role": "lunar_ldec:site20",
+    "path": "data\\raw\\Site20_final_adj_5mpp_ldec.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site20 5 mpp",
+    "size_bytes": 40980740,
+    "sha256": "dcc6e2a52b9f0f4ca03b59b1dbc5bc725563de79ddcbed0ec4e7dbac8d62163b",
+    "accessed_utc": "2026-11-15T03:48:51+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      65000.0,
+      110000.0,
+      81000.0,
+      126000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.0,
+    "max": 4.0
+  },
+  {
+    "role": "lunar_toterr:site20",
+    "path": "data\\raw\\Site20_final_adj_5mpp_toterr.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site20 5 mpp",
+    "size_bytes": 40980809,
+    "sha256": "3600dcb6dde91cec86cb8d350a620391e828097a46026031d3638b4b3b46367a",
+    "accessed_utc": "2026-11-15T03:48:51+00:00",
+    "crs": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      3200,
+      3200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      65000.0,
+      110000.0,
+      81000.0,
+      126000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.06820759922266006,
+    "max": 7.482147216796875
+  },
+  {
+    "role": "lunar_dem:site23",
+    "path": "data\\raw\\Site23_final_adj_5mpp_surf.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site23 5 mpp",
+    "size_bytes": 70586804,
+    "sha256": "12d280a59cd7580415f6bada638d0abe025ce6727541fddf68d5dc371a6c94cf",
+    "accessed_utc": "2026-11-15T03:48:54+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      4200,
+      4200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -11000.0,
+      111000.0,
+      10000.0,
+      132000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 901.9910888671875,
+    "max": 5173.56298828125
+  },
+  {
+    "role": "lunar_ldec:site23",
+    "path": "data\\raw\\Site23_final_adj_5mpp_ldec.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site23 5 mpp",
+    "size_bytes": 70586742,
+    "sha256": "ebb6adb3603f3921fcce9c8bfd06fb79ca5fd88b53f11ab4c65f0da158316c74",
+    "accessed_utc": "2026-11-15T03:48:54+00:00",
+    "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      4200,
+      4200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -11000.0,
+      111000.0,
+      10000.0,
+      132000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.0,
+    "max": 5.0
+  },
+  {
+    "role": "lunar_toterr:site23",
+    "path": "data\\raw\\Site23_final_adj_5mpp_toterr.tif",
+    "url": "https://pgda.gsfc.nasa.gov/products/78",
+    "version": "LOLA site23 5 mpp",
+    "size_bytes": 70586811,
+    "sha256": "fe08539cfa3a0f7bb4ddf15dd7e0835fae0c761d516b2157d51116311a1ff69d",
+    "accessed_utc": "2026-11-15T03:48:55+00:00",
+    "crs": "PROJCS[\"unknown\",GEOGCS[\"unknown\",DATUM[\"unknown\",SPHEROID[\"unknown\",1737400,0]],PRIMEM[\"Reference meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      4200,
+      4200
+    ],
+    "pixel_size": [
+      5.0,
+      5.0
+    ],
+    "nodata": NaN,
+    "bounds": [
+      -11000.0,
+      111000.0,
+      10000.0,
+      132000.0
+    ],
+    "dtype": "float32",
+    "valid_fraction": 1.0,
+    "min": 0.05679123103618622,
+    "max": 15.93561840057373
+  },
+  {
+    "role": "lunar_illumination",
+    "path": "data\\raw\\AVGVISIB_85S_060M_201608.TIF",
+    "url": "https://pgda.gsfc.nasa.gov/products/69",
+    "version": "LOLA polar illumination 85S-90S 60 m (Mazarico et al.)",
+    "size_bytes": 33994464,
+    "sha256": "ccf67d4f39e0a970c111196da7d6551ffcf50d075470b93067fb3904c0b05806",
+    "accessed_utc": "2026-11-15T03:48:55+00:00",
+    "crs": "PROJCS[\"Moon2000_spole\",GEOGCS[\"GCS_Moon\",DATUM[\"D_Moon_2000\",SPHEROID[\"Moon_2000_IAU_IAG\",1737400,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      5058,
+      5058
+    ],
+    "pixel_size": [
+      60.0,
+      60.0
+    ],
+    "nodata": -32768.0,
+    "bounds": [
+      -151740.0,
+      -151740.0,
+      151740.0,
+      151740.0
+    ],
+    "dtype": "int16",
+    "valid_fraction": 1.0,
+    "min": 0.0,
+    "max": 22111.0
+  },
+  {
+    "role": "lunar_earth_visibility",
+    "path": "data\\raw\\AVGVISIB_85S_060M_201608_EARTH.TIF",
+    "url": "https://pgda.gsfc.nasa.gov/products/69",
+    "version": "LOLA polar illumination 85S-90S 60 m (Mazarico et al.)",
+    "size_bytes": 24862958,
+    "sha256": "d71dc5adfff653e0e924e0a4cbf03795b996caa30b4ace3d5843a70a5ab2f3d2",
+    "accessed_utc": "2026-11-15T03:48:56+00:00",
+    "crs": "PROJCS[\"Moon2000_spole\",GEOGCS[\"GCS_Moon\",DATUM[\"D_Moon_2000\",SPHEROID[\"Moon_2000_IAU_IAG\",1737400,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      5058,
+      5058
+    ],
+    "pixel_size": [
+      60.0,
+      60.0
+    ],
+    "nodata": -32768.0,
+    "bounds": [
+      -151740.0,
+      -151740.0,
+      151740.0,
+      151740.0
+    ],
+    "dtype": "int16",
+    "valid_fraction": 1.0,
+    "min": 0.0,
+    "max": 25000.0
+  },
+  {
+    "role": "lunar_psr",
+    "path": "data\\raw\\LPSR_85S_060M_201608.TIF",
+    "url": "https://pgda.gsfc.nasa.gov/products/69",
+    "version": "LOLA polar illumination 85S-90S 60 m (Mazarico et al.)",
+    "size_bytes": 656183,
+    "sha256": "e9544c081dd4e36f079e92bc3a376d0913857a61a4a53c209175c081762de43c",
+    "accessed_utc": "2026-11-15T03:48:56+00:00",
+    "crs": "PROJCS[\"Moon2000_spole\",GEOGCS[\"GCS_Moon\",DATUM[\"D_Moon_2000\",SPHEROID[\"Moon_2000_IAU_IAG\",1737400,0]],PRIMEM[\"Reference_Meridian\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+    "shape": [
+      5058,
+      5058
+    ],
+    "pixel_size": [
+      60.0,
+      60.0
+    ],
+    "nodata": -32768.0,
+    "bounds": [
+      -151740.0,
+      -151740.0,
+      151740.0,
+      151740.0
+    ],
+    "dtype": "int16",
+    "valid_fraction": 1.0,
+    "min": -20000.0,
+    "max": 20000.0
+  },
+  {
     "role": "earth_dem:haughton",
     "path": "data\\raw\\haughton_cop30.tif",
     "url": "https://doi.org/10.5270/ESA-c5d3d65",
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 55239170,
     "sha256": "f81e48eee47e8f9dc64243d0a9c3b68fdd55035d010ae34636c6ff7fb0bf1756",
-    "accessed_utc": "2026-11-14T21:14:50+00:00",
+    "accessed_utc": "2026-11-15T03:48:58+00:00",
     "crs": "EPSG:4326",
     "shape": [
       1980,
@@ -122,7 +470,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 70359221,
     "sha256": "b9b4db84a40c20fc7eb7900897ddb8c894006be49db00d6251ca4fb44af70f36",
-    "accessed_utc": "2026-11-14T21:14:53+00:00",
+    "accessed_utc": "2026-11-15T03:49:01+00:00",
     "crs": "EPSG:4326",
     "shape": [
       5400,
@@ -151,7 +499,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 14528281,
     "sha256": "295a155a7b3a5f1c78765191666e6d5311898e382ab980a2d124e4fb7624ea96",
-    "accessed_utc": "2026-11-14T21:14:54+00:00",
+    "accessed_utc": "2026-11-15T03:49:02+00:00",
     "crs": "EPSG:4326",
     "shape": [
       1800,
@@ -180,7 +528,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 4403771,
     "sha256": "c1ac1fbf18646e17bee7d130d64d9ff64f82b87768bf2478e34120c564f02894",
-    "accessed_utc": "2026-11-14T21:14:54+00:00",
+    "accessed_utc": "2026-11-15T03:49:02+00:00",
     "crs": "EPSG:4326",
     "shape": [
       1620,
@@ -209,7 +557,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 27402649,
     "sha256": "655be25a63ea0633b3ddd303e861f801ac4074382c5801f877a361d435710fad",
-    "accessed_utc": "2026-11-14T21:14:55+00:00",
+    "accessed_utc": "2026-11-15T03:49:03+00:00",
     "crs": "EPSG:4326",
     "shape": [
       1800,
@@ -238,7 +586,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 17432446,
     "sha256": "4c9a006e806631026752851afff76cf9840fe1cb26c5256576a091eb5c663727",
-    "accessed_utc": "2026-11-14T21:14:56+00:00",
+    "accessed_utc": "2026-11-15T03:49:04+00:00",
     "crs": "EPSG:4326",
     "shape": [
       1980,
@@ -267,7 +615,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 31810008,
     "sha256": "25f17fe1c9e0480e2fc345ecfbdd9e6ecbdba17e3467773672f1bf3cac8457b1",
-    "accessed_utc": "2026-11-14T21:14:57+00:00",
+    "accessed_utc": "2026-11-15T03:49:05+00:00",
     "crs": "EPSG:4326",
     "shape": [
       2880,
@@ -296,7 +644,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 21223691,
     "sha256": "b812867605ffdfb0cbb7d3ec9b5fd87893f919699f50687b2e99ad93802eac06",
-    "accessed_utc": "2026-11-14T21:14:58+00:00",
+    "accessed_utc": "2026-11-15T03:49:06+00:00",
     "crs": "EPSG:4326",
     "shape": [
       2160,
@@ -325,7 +673,7 @@
     "version": "Copernicus DEM GLO-30 (ESA, ~30 m)",
     "size_bytes": 25448802,
     "sha256": "322cfb8e354cacb0219a3163af26ad0e750d6ad65477b6b1f02d85d73cbc7a30",
-    "accessed_utc": "2026-11-14T21:14:59+00:00",
+    "accessed_utc": "2026-11-15T03:49:07+00:00",
     "crs": "EPSG:4326",
     "shape": [
       2160,

@@ -1,6 +1,6 @@
 # Analog Mission Designer — Experimento 01: Lunar Rover Terrain Analog
 
-NASA Space Apps Challenge 2026. Compara una ventana de 3×3 km de **Site01 — Connecting Ridge** (polo sur lunar, LOLA) con ventanas de **9 regiones** (Haughton, Atacama, Etna, Lanzarote, Askja, Cinder Lake y las candidatas Khaybar, Undara y Jingpo; Copernicus DEM GLO-30, ver `regions.json`) usando pendiente, rugosidad y relieve local a escala común. Muestra las métricas por separado y un ranking de **similitud relativa**, nunca un "% de parecido".
+NASA Space Apps Challenge 2026. Compara ventanas de 3×3 km de varios sitios del polo sur lunar (**Site01 Connecting Ridge, Site04 borde de Shackleton, Site20 meseta Leibnitz beta, Site23 macizo Malapert**; LOLA 5 m, ver `lunar_sites.json`) con ventanas de **9 regiones** (Haughton, Atacama, Etna, Lanzarote, Askja, Cinder Lake y las candidatas Khaybar, Undara y Jingpo; Copernicus DEM GLO-30, ver `regions.json`) usando pendiente, rugosidad y relieve local a escala común. Muestra las métricas por separado y un ranking de **similitud relativa**, nunca un "% de parecido".
 
 > Estado: pipeline ejecutado con LOLA Site01 y Copernicus DEM reales (primera corrida, ventana lunar provisional). Resultados preliminares en `data/outputs/`; aún sin validación ni análisis de robustez completo.
 > No es una certificación de aptitud para rovers ni una validación de NASA.
@@ -18,7 +18,8 @@ python -m pytest -q tests       # valida el cálculo (planos sintéticos)
 
 | Fuente | Qué bajar |
 |---|---|
-| LOLA Site01 ([PGDA](https://pgda.gsfc.nasa.gov/products/78)) | `Site01_final_adj_5mpp_surf.tif`, `_ldec.tif`, `_toterr.tif` (opcional `_slperr.tif`) |
+| LOLA sitios del polo sur ([PGDA](https://pgda.gsfc.nasa.gov/data/LOLA_5mpp/)) | por sitio: `SiteNN_final_adj_5mpp_surf.tif`, `_ldec.tif`, `_toterr.tif` (Site01 además `_slperr.tif`, que usa la validación). Los sitios sin archivos en `data/raw/` se omiten |
+| Iluminación LOLA ([PGDA](https://pgda.gsfc.nasa.gov/products/69)) | `AVGVISIB_85S_060M_201608.TIF` (iluminación media), `AVGVISIB_85S_060M_201608_EARTH.TIF` (visibilidad de la Tierra), `LPSR_85S_060M_201608.TIF` (sombra permanente), en `data/raw/`. Sin ellos el pipeline corre sin esa capa |
 | Copernicus DEM GLO-30 ([DOI](https://doi.org/10.5270/ESA-c5d3d65)) | `python -m src.download` (OpenTopography, requiere `OPENTOPO_KEY` en `.env`). NASADEM no cubre 75° N |
 
 Las regiones y sus cajas de búsqueda están en `regions.json` (coordenadas aproximadas, por verificar). Cada una se procesa en su UTM.

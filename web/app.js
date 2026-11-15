@@ -10,7 +10,7 @@ const LABEL = {
 };
 const FAR_KM = 25; // más lejos que esto del sitio documentado: posible lugar nuevo
 const $ = (id) => document.getElementById(id);
-const S = { val: null, meta: null, lunar: [], earth: {}, ctx: {}, sel: 0, cand: 0, region: "all", heat: false, suit: "", hover: null, maps: {}, img: null };
+const S = { val: null, meta: null, lunar: [], earth: {}, ctx: {}, sel: 0, site: null, all: [], cand: 0, region: "all", heat: false, suit: "", hover: null, maps: {}, img: null };
 
 const f1 = (x, d = 1) => Number(x).toLocaleString("es-CL", { minimumFractionDigits: d, maximumFractionDigits: d });
 const lat = (x) => `${f1(Math.abs(x), 3)}° ${x < 0 ? "S" : "N"}`;
@@ -24,7 +24,7 @@ async function boot() {
       ["meta", "lunar_windows", "earth_windows", "context"].map((n) => fetch(`data/${n}.json`).then((r) => {
         if (!r.ok) throw new Error(n); return r.json();
       })));
-    S.meta = meta; S.lunar = lunar; S.earth = earth; S.ctx = ctx;
+    S.meta = meta; S.all = lunar; S.earth = earth; S.ctx = ctx;
     try { S.val = await fetch("data/validation.json").then((r) => (r.ok ? r.json() : null)); } catch (e2) { S.val = null; }
   } catch (e) {
     document.querySelector("main").innerHTML =
@@ -34,19 +34,32 @@ async function boot() {
        <code>http://localhost:8000</code>. Si ya lo hiciste, ejecuta antes <code>run_regions.py</code>.</p></div>`;
     return;
   }
-  const ref = S.meta.reference_window.center;
-  S.sel = nearest(ref[0], ref[1]);
-  $("src-moon").href = S.meta.lunar.source_url;
+  $("src-moon").href = S.meta.source_url_moon;
   $("src-earth").href = S.meta.earth.source_url;
   $("status").textContent = S.meta.status;
   const regs = Object.values(S.meta.regions);
   $("nreg").textContent = regs.length;
   $("regionsel").innerHTML = `<option value="all">Todas</option>` + regs.map((r) => `<option value="${r.id}">${esc(r.short)}</option>`).join("");
+  $("sitesel").innerHTML = Object.values(S.meta.lunar_sites).map((x) => `<option value="${x.id}">${esc(x.short)}</option>`).join("");
+  wire();
+  setSite(S.meta.default_site);
+  renderConfig();
+}
+
+/* Sitio lunar activo: S.lunar son solo sus ventanas; las coordenadas X/Y no se repiten entre sitios */
+const SM = () => S.meta.lunar_sites[S.site];
+function setSite(id) {
+  S.site = id; S.hover = null;
+  S.lunar = S.all.filter((w) => w.site === id);
+  const ref = S.meta.reference_window;
+  if (ref.site === id) S.sel = nearest(ref.center[0], ref.center[1]);
+  else { const [l, b, r, t] = SM().bounds; S.sel = nearest((l + r) / 2, (b + t) / 2); }
+  $("sitesel").value = id;
+  $("moontitle").textContent = SM().short;
+  S.cand = 0;
   S.img = new Image();
   S.img.onload = () => { drawMoon(); renderMoonPanel(); renderLive(); };
-  S.img.src = S.meta.lunar.image;
-  wire();
-  renderConfig();
+  S.img.src = SM().image;
 }
 
 function nearest(x, y) {
@@ -59,7 +72,7 @@ const entries = () => (S.region === "all" ? S.lunar[S.sel].top : (S.lunar[S.sel]
 const bestD = (w) => w.top[0].D;
 
 /* ---------- Luna ---------- */
-const B = () => S.meta.lunar.bounds; // [left,bottom,right,top] en metros
+const B = () => SM().bounds; // [left,bottom,right,top] en metros
 function toPx(x, y, cv) { const [l, b, r, t] = B(); return [(x - l) / (r - l) * cv.width, (t - y) / (t - b) * cv.height]; }
 function toM(px, py, cv) { const [l, b, r, t] = B(); return [l + px / cv.width * (r - l), t - py / cv.height * (t - b)]; }
 
@@ -85,7 +98,7 @@ function drawMoon() {
     g.fillStyle = "rgba(47,184,111,.85)"; g.strokeStyle = "#fff"; g.lineWidth = 1.5;
     g.beginPath(); g.arc(px, py, 7, 0, 7); g.fill(); g.stroke();
   });
-  const half = S.meta.lunar.window_m / 2;
+  const half = SM().window_m / 2;
   const box = (w, stroke, fill, lw) => {
     const [x0, y0] = toPx(w.center_x - half, w.center_y + half, cv), [x1, y1] = toPx(w.center_x + half, w.center_y - half, cv);
     g.lineWidth = lw; g.strokeStyle = stroke; if (fill) { g.fillStyle = fill; g.fillRect(x0, y0, x1 - x0, y1 - y0); }
@@ -104,6 +117,9 @@ function renderMoonPanel() {
   const w = S.lunar[S.sel];
   $("winpos").textContent = `centro X ${f1(w.center_x, 0)} m · Y ${f1(w.center_y, 0)} m`;
   $("moonmetrics").innerHTML = KEYS.map((k) => `<dt>${LABEL[k][0]}</dt><dd>${f1(w.metrics[k])}${LABEL[k][1]}</dd>`).join("") +
+    (w.illumination ? `<dt>Iluminación media</dt><dd>${pct(w.illumination.illumination_mean)}<small>promedio ~18,6 años, a nivel del suelo</small></dd>
+     <dt>Visibilidad de la Tierra</dt><dd>${pct(w.illumination.earth_visibility_mean)}</dd>
+     <dt>Sombra permanente</dt><dd>${pct(w.illumination.psr_fraction)} del área</dd>` : "") +
     `<dt>Fracción observada por LOLA</dt><dd>${w.lola_observed_fraction == null ? "Sin datos" : pct(w.lola_observed_fraction)}<small>el resto es interpolado</small></dd>`;
   $("moonslope").innerHTML = S.meta.slope_class_labels.map((l, i) =>
     `<div class="row"><span>${l}</span><div class="track"><div class="fill" style="width:${w.slope_classes[i] * 100}%"></div></div><span class="val">${pct(w.slope_classes[i])}</span></div>`).join("");
@@ -115,13 +131,13 @@ function renderMoonPanel() {
 function renderSuitability(w) {
   const bs = w.base_suitability;
   if (!bs) { $("moonsuit").innerHTML = ""; $("suitnote").textContent = "Aptitud de base no disponible: vuelve a ejecutar run_regions.py."; return; }
-  $("moonsuit").innerHTML = Object.values(bs).map((p) => p.fraction == null ? "" :
-    `<div class="srow"><span class="badge ${p.meets ? "ok" : "no"}">${p.meets ? "Apta" : "No apta"}</span>
-      <span><b>${esc(p.label)}</b><small>${esc(p.criterion)}: ${pct(p.fraction)} (mínimo ${pct(p.min_fraction)})</small></span>
-      <span class="val">${pct(p.fraction)}</span></div>`).join("");
+  const part = (x) => `${esc(x.label)} ${x.value == null ? "sin dato" : pct(x.value)} (mín. ${pct(x.min)})`;
+  $("moonsuit").innerHTML = Object.values(bs).map((p) =>
+    `<div class="srow"><span class="badge ${p.meets ? "ok" : "no"}">${p.meets == null ? "Sin dato" : p.meets ? "Apta" : "No apta"}</span>
+      <span><b>${esc(p.label)}</b><small>${p.parts.map(part).join(" · ")}</small></span></div>`).join("");
   const n = S.lunar.length, c = (k) => S.lunar.filter((x) => x.base_suitability && x.base_suitability[k].meets).length;
-  $("suitnote").textContent = `En Site01, ${c("landing_habitat")} de ${n} ventanas cumplen el criterio de aterrizaje/hábitat y ${c("rover_traverse")} el de rover. ` +
-    "Los umbrales son hipótesis del equipo, no requisitos de NASA; la fracción de pendiente baja no garantiza terreno plano contiguo. Aún sin iluminación, temperatura ni visibilidad de la Tierra.";
+  $("suitnote").textContent = `En ${SM().short} (${n} ventanas): ${c("habitat_full")} cumplen hábitat completo, ${c("landing_habitat")} solo la topografía de aterrizaje/hábitat, ${c("power_comms")} energía y comunicaciones, ${c("isru_ice")} zona fría y ${c("rover_traverse")} rover. ` +
+    "Umbrales provisionales del equipo, no requisitos de NASA. Iluminación y visibilidad de la Tierra son promedios de ~18,6 años a nivel del suelo (LOLA, 60 m); la sombra permanente es una zona fría candidata, no prueba de hielo. Falta temperatura.";
 }
 
 function wireMoon() {
@@ -132,6 +148,7 @@ function wireMoon() {
   cv.addEventListener("mouseleave", () => { S.hover = null; drawMoon(); });
   $("heat").addEventListener("change", (e) => { S.heat = e.target.checked; $("heatlegend").hidden = !S.heat; drawMoon(); });
   $("suitsel").addEventListener("change", (e) => { S.suit = e.target.value; drawMoon(); });
+  $("sitesel").addEventListener("change", (e) => { setSite(e.target.value); });
   $("regionsel").addEventListener("change", (e) => { S.region = e.target.value; S.cand = 0; renderLive(); });
 }
 
@@ -139,7 +156,7 @@ function wireMoon() {
 function renderConfig() {
   const p = S.meta.params, regs = Object.values(S.meta.regions);
   $("cfg").innerHTML = [
-    ["Datos terrestres", S.meta.earth.dataset], ["Datos lunares", "LOLA Site01 (5 m, ~90 % interpolado)"],
+    ["Datos terrestres", S.meta.earth.dataset], ["Datos lunares", `LOLA 5 m, ${Object.keys(S.meta.lunar_sites).length} sitios del polo sur (mayoría interpolada)`],
     ["Regiones", String(regs.length)], ["Ventana de análisis", `${f1(p.actual_window_m, 0)} m (≈ 3 × 3 km)`],
     ["Paso del barrido", `${f1(p.actual_step_m, 0)} m`], ["Escala común", `${f1(p.analysis_scale_m, 0)} m/píxel`],
     ["Rugosidad", `residuo sobre plano local de ${p.roughness_window_m} m`],
@@ -262,7 +279,7 @@ function renderRobust() {
   const r = S.lunar[S.sel].robust;
   $("robust1").textContent = r
     ? `Robustez de esta ventana — región ganadora estable ante pesos alternativos: ${yn(r.weights_top1_region)}; ante otra normalización: ${yn(r.norm_top1_region)}; ante otra escala (60/150 m): ${yn(r.scale_top1_region)}.`
-    : "";
+    : "Robustez no evaluada para este sitio lunar: la validación (V3/V4) se hizo solo con Site01.";
 }
 const stChip = (s) => `<span class="chip ${s === "cumple" ? "ok" : s === "con reservas" ? "w" : "bad"}">${esc(s)}</span>`;
 const rng = (arr, f = (x) => pct(x)) => { const lo = Math.min(...arr), hi = Math.max(...arr); return lo === hi ? f(lo) : `${f(lo)}–${f(hi)}`; };
@@ -322,7 +339,7 @@ function renderResults() {
   drawCands("m3", "map3", C, () => { renderResults(); renderLive(); });
   $("compare").hidden = !C.length;
   if (C.length) renderCompare(C[S.cand], lw);
-  const ref = S.meta.reference_window, isRef = S.sel === nearest(ref.center[0], ref.center[1]);
+  const ref = S.meta.reference_window, isRef = ref.site === S.site && S.sel === nearest(ref.center[0], ref.center[1]);
   $("sensnote").textContent = isRef
     ? `Robustez de esta ventana (todas las regiones): ${ref.sensitivity_weights.stable ? "el top 3 no cambia" : "el top 3 CAMBIA"} al usar pesos alternativos. El ranking debe leerse como exploratorio.`
     : "La robustez frente a pesos alternativos aún no se ha evaluado para esta ventana (fase de validación).";
@@ -340,7 +357,7 @@ const chip = (txt, kind) => `<span class="chip ${kind}">${txt}</span>`;
 const srcLinks = (arr) => (arr || []).map((u, i) => `<a href="${u}" target="_blank" rel="noopener">fuente${arr.length > 1 ? " " + (i + 1) : ""}</a>`).join(" · ");
 
 function contextRows(c) {
-  const mc = S.meta.moon_context, cx = S.ctx[c.reg.id], none = (t) => `<span class="mute">${t}</span>`;
+  const mc = { ...S.meta.moon_context, composition: SM().composition }, cx = S.ctx[c.reg.id], none = (t) => `<span class="mute">${t}</span>`;
   const rows = [];
   // Temperatura
   const t = cx && cx.temperature;
@@ -352,7 +369,7 @@ function contextRows(c) {
   // Composición
   const k = cx && cx.composition;
   rows.push(["Composición de la superficie",
-    `${chip("cualitativo", "w")} ${esc(mc.composition.text)} <small>${esc(mc.composition.caveat)} ${srcLinks(mc.composition.sources)}</small>`,
+    `${chip(mc.composition.status === "pendiente" ? "pendiente" : "cualitativo", "w")} ${esc(mc.composition.text)} <small>${esc(mc.composition.caveat)} ${srcLinks(mc.composition.sources)}</small>`,
     k && k.status === "ok"
       ? `${chip("dato", "ok")} ${k.lithology.map((l) => `${esc(l.lith)} ${pct(l.share)}`).join(" · ")} <small>${k.samples_with_data}/${k.samples} puntos con dato. ${esc(k.caveat)} ${srcLinks([k.source])}</small>`
       : none("Sin dato en el mapa geológico")]);
@@ -370,18 +387,18 @@ function contextRows(c) {
 
 function renderCompare(c, lw) {
   $("cmptitle").textContent = `Comparación: referencia lunar vs. candidato #${c.rank} (${c.reg.short})`;
-  const cv = $("cmpmoon"), g = cv.getContext("2d"), im = S.img, [l, b, r, t] = B(), half = S.meta.lunar.window_m / 2;
+  const cv = $("cmpmoon"), g = cv.getContext("2d"), im = S.img, [l, b, r, t] = B(), half = SM().window_m / 2;
   const sx = (lw.center_x - half - l) / (r - l) * im.naturalWidth, sy = (t - (lw.center_y + half)) / (t - b) * im.naturalHeight;
-  const sw = S.meta.lunar.window_m / (r - l) * im.naturalWidth;
+  const sw = SM().window_m / (r - l) * im.naturalWidth;
   g.clearRect(0, 0, cv.width, cv.height); g.drawImage(im, sx, sy, sw, sw, 0, 0, cv.width, cv.height);
   $("cmpearth").src = c.e.image;
-  $("cmpmooncap").textContent = `${S.meta.lunar.site} · centro X ${f1(lw.center_x, 0)} m, Y ${f1(lw.center_y, 0)} m (vista sombreada del DEM)`;
+  $("cmpmooncap").textContent = `${SM().short} · centro X ${f1(lw.center_x, 0)} m, Y ${f1(lw.center_y, 0)} m (vista sombreada del DEM)`;
   $("cmpearthcap").textContent = `${c.reg.short} · ${lat(c.e.center[0])}, ${lon(c.e.center[1])} (vista sombreada del DEM)`;
   const cls = S.meta.slope_class_labels;
   const side = (m, extra) => KEYS.map((k) => `<dt>${LABEL[k][0]}</dt><dd>${f1(m[k])}${LABEL[k][1]}</dd>`).join("") +
     cls.map((lb, i) => `<dt>Pendiente ${lb}</dt><dd>${pct(extra.classes[i])}</dd>`).join("") + extra.rows;
   $("sidemoon").innerHTML = side(lw.metrics, { classes: lw.slope_classes, rows:
-    `<dt>Fuente</dt><dd>LOLA Site01 (5 m)</dd><dt>Observado por LOLA</dt><dd>${lw.lola_observed_fraction == null ? "Sin datos" : pct(lw.lola_observed_fraction)}<small>el resto es interpolado</small></dd>` });
+    `<dt>Fuente</dt><dd>LOLA ${esc(SM().short)} (5 m)</dd><dt>Observado por LOLA</dt><dd>${lw.lola_observed_fraction == null ? "Sin datos" : pct(lw.lola_observed_fraction)}<small>el resto es interpolado</small></dd>` });
   $("sideearth").innerHTML = side(c.e.metrics, { classes: c.e.slope_classes, rows:
     `<dt>Fuente</dt><dd>${S.meta.earth.dataset}</dd><dt>Cobertura válida</dt><dd>${pct(c.e.valid_coverage_fraction)}</dd><dt>Estado de la región</dt><dd>${c.reg.status === "known" ? "conocida" : "candidata"}</dd>` });
   const sc = S.meta.scales;
@@ -418,8 +435,8 @@ function exportGeo() {
       center: { latitude: c.e.center[0], longitude: c.e.center[1] }, normalized_distance: c.D,
       similarity_percentile: c.t.percentile, component_distances: c.comp, metrics: c.e.metrics, slope_classes: c.e.slope_classes,
       valid_coverage_fraction: c.e.valid_coverage_fraction, context: S.ctx[c.reg.id] || null,
-      lunar_reference: { center_x_m: lw.center_x, center_y_m: lw.center_y, crs: S.meta.lunar.crs, metrics: lw.metrics },
-      params: S.meta.params, sources: [S.meta.lunar.source_url, S.meta.earth.source_url], status: "preliminary" } })) };
+      lunar_reference: { center_x_m: lw.center_x, center_y_m: lw.center_y, site: S.site, crs: SM().crs, metrics: lw.metrics },
+      params: S.meta.params, sources: [SM().source_url, S.meta.earth.source_url], status: "preliminary" } })) };
   download("candidates.geojson", JSON.stringify(fc, null, 2), "application/geo+json");
 }
 function exportCsv() {

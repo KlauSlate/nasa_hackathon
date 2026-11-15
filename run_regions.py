@@ -1,4 +1,4 @@
-"""Pipeline multirregión: compara ventanas lunares de Site01 con TODAS las regiones de regions.json.
+"""Pipeline multirregión: compara ventanas lunares de cada sitio de lunar_sites.json con TODAS las regiones de regions.json.
 
 Cada región se procesa en su UTM, con la misma escala (90 m) y las mismas métricas. La
 escala robusta de normalización se calcula con las ventanas de TODAS las regiones juntas,
@@ -6,8 +6,7 @@ para que D sea comparable entre regiones. El contexto ambiental (sismicidad, vol
 temperatura, composición) no entra en D: se guarda aparte y solo se muestra.
 
     python fetch_regions.py                     # descarga DEMs y contexto
-    python run_regions.py --lunar-dem data/raw/Site01_final_adj_5mpp_surf.tif \
-        --lunar-ldec data/raw/Site01_final_adj_5mpp_ldec.tif --lunar-toterr data/raw/Site01_final_adj_5mpp_toterr.tif
+    python run_regions.py                       # usa lunar_sites.json (sitios sin DEM en data/raw se omiten)
 """
 from __future__ import annotations
 
@@ -23,6 +22,7 @@ from rasterio.warp import transform as warp_transform
 
 from run_pipeline import EARTH_DATASET, EARTH_URL, LUNAR_URL, VERSION, lunar_quality, window_polygon
 from src.base import base_suitability
+from src import illum as illum_mod
 from src.context import region_context
 from src.enrich import (PENDING_VALIDATION, SLOPE_CLASSES, hillshade_png, lunar_grid, rank_lunar_windows,
                         read_window_native, slope_class_fractions)
@@ -35,12 +35,6 @@ METRICS = ("slope_p50_deg", "slope_p90_deg", "roughness_270m_m", "relief_p95_p5_
 
 # Contexto lunar. Solo lo respaldado por fuentes revisadas; el resto figura como pendiente.
 MOON_CONTEXT = {
-    "composition": {
-        "status": "cualitativo",
-        "text": "Tierras altas del polo sur. Según la literatura revisada, el impacto de Shackleton expuso anortosita muy pura (PAN) y un terreno estratificado de eyectas, cerca de Connecting Ridge.",
-        "caveat": "Descripción cualitativa de la literatura; no está mapeada con datos propios. Los mapas de FeO y plagioclasa (Lemelin et al. 2022) son de ~1 km por píxel con incertidumbre de 9 wt %, y no se han incorporado.",
-        "sources": ["https://boris.unibe.ch/179288/1/Boazman_2022_Planet._Sci._J._3_275.pdf"],
-    },
     "temperature": {
         "status": "pendiente",
         "text": "Sin dato incorporado. LRO Diviner publica productos polares (Polar Cumulative Product, GDR L2), pero aún no se han descargado ni procesado.",
@@ -61,15 +55,11 @@ def utm_epsg(lat: float, lon: float) -> str:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--lunar-dem", required=True)
-    ap.add_argument("--lunar-ldec")
-    ap.add_argument("--lunar-toterr")
+    ap.add_argument("--lunar-sites", default="lunar_sites.json")
     ap.add_argument("--regions", default="regions.json")
     ap.add_argument("--res", type=float, default=90.0)
     ap.add_argument("--window-m", type=float, default=3000.0)
     ap.add_argument("--step-m", type=float, default=1500.0)
-    ap.add_argument("--ref-center", type=float, nargs=2, default=(-11395.0, -10075.0),
-                    help="ventana lunar de referencia para la prueba de sensibilidad (X Y, metros)")
     ap.add_argument("--out", default="data/outputs")
     ap.add_argument("--web-data", default="web/data")
     args = ap.parse_args()
@@ -82,18 +72,44 @@ def main():
     regions = {r["id"]: r for r in json.loads(Path(args.regions).read_text(encoding="utf-8"))}
     n = window_pixels(args.window_m, args.res)
 
-    # --- Luna
-    moon = load_surface(args.lunar_dem, args.res)
-    m_slope, m_rough = derive_layers(moon)
-    lrows = lunar_grid(moon, m_slope, m_rough, n, max(int(round(500 / args.res)), 1), args.lunar_ldec)
-    print(f"Luna: {len(lrows)} ventanas")
+    # --- Luna (uno o varios sitios; X/Y son polares estereográficas y no se repiten entre sitios)
+    sites_cfg = json.loads(Path(args.lunar_sites).read_text(encoding="utf-8"))
+    sites, lrows, manifest = {}, [], []
+    for sc in sites_cfg:
+        if not Path(sc["dem"]).exists():
+            print(f"[sitio lunar omitido] {sc['id']}: falta {sc['dem']}")
+            continue
+        moon = load_surface(sc["dem"], args.res)
+        m_slope, m_rough = derive_layers(moon)
+        lr = lunar_grid(moon, m_slope, m_rough, n, max(int(round(500 / args.res)), 1), sc.get("ldec"))
+        for w in lr:
+            w["site"] = sc["id"]
+        if illum_mod.available():
+            with rasterio.open(sc["dem"]) as src_b:
+                bb = src_b.bounds
+            layers_i = illum_mod.load_site_layers((bb.left, bb.bottom, bb.right, bb.top))
+            if layers_i is not None:
+                for w in lr:
+                    w["illumination"] = illum_mod.window_illumination(layers_i, w["center_x"], w["center_y"], n * args.res)
+            else:
+                print(f"[sin mapa de iluminación] {sc['id']} queda fuera del mapa 85S-90S")
+        else:
+            print("[sin mapas de iluminación] faltan archivos en data/raw (ver src/illum.py)")
+        lrows += lr
+        sites[sc["id"]] = {"cfg": sc, "crs": str(moon.crs)}
+        manifest.append(describe_raster(sc["dem"], f"lunar_dem:{sc['id']}", LUNAR_URL, f"LOLA {sc['id']} 5 mpp"))
+        for key in ("ldec", "toterr"):
+            if sc.get(key) and Path(sc[key]).exists():
+                manifest.append(describe_raster(sc[key], f"lunar_{key}:{sc['id']}", LUNAR_URL, f"LOLA {sc['id']} 5 mpp"))
+        print(f"Luna {sc['id']}: {len(lr)} ventanas")
+    if not lrows:
+        raise SystemExit("No hay ningún sitio lunar con DEM en data/raw.")
+    if illum_mod.available():
+        for lname, lpath in illum_mod.LAYERS.items():
+            manifest.append(describe_raster(lpath, f"lunar_{lname}", illum_mod.SOURCE_URL, "LOLA polar illumination 85S-90S 60 m (Mazarico et al.)"))
 
     # --- Regiones
-    surf, layers, frames, manifest, skipped = {}, {}, [], [], []
-    manifest.append(describe_raster(args.lunar_dem, "lunar_dem", LUNAR_URL, "LOLA Site01 5 mpp"))
-    for p, role in ((args.lunar_ldec, "lunar_ldec"), (args.lunar_toterr, "lunar_toterr")):
-        if p:
-            manifest.append(describe_raster(p, role, LUNAR_URL, "LOLA Site01 5 mpp"))
+    surf, layers, frames, skipped = {}, {}, [], []
     for rid, r in regions.items():
         dem = Path(f"data/raw/{rid}_cop30.tif")
         if not dem.exists():
@@ -123,10 +139,12 @@ def main():
     # --- Ranking por ventana lunar
     ranks = rank_lunar_windows(lrows, pooled, scales, 3, args.window_m)
     for lr, rk in zip(lrows, ranks):
+        rk["site"] = lr["site"]
         rk["metrics"] = {k: lr[k] for k in METRICS}
         rk["lola_observed_fraction"] = lr["lola_observed_fraction"]
         rk["slope_classes"] = lr["slope_classes"]
-        rk["base_suitability"] = base_suitability(lr["slope_classes"])
+        rk["illumination"] = lr.get("illumination")
+        rk["base_suitability"] = base_suitability(lr["slope_classes"], lr.get("illumination"))
 
     # --- Ventanas terrestres referenciadas (polígono, clases de pendiente, imagen)
     refs = {(t["region"], t["row"], t["col"]) for w in ranks for t in w["top"]}
@@ -148,13 +166,17 @@ def main():
     print(f"{len(earth_out)} ventanas terrestres referenciadas")
 
     # --- Sensibilidad a pesos y control para la ventana lunar de referencia
-    xr, yr = args.ref_center
-    ref_i = int(np.argmin([(w["center_x"] - xr) ** 2 + (w["center_y"] - yr) ** 2 for w in ranks]))
+    ref_site = next((sid for sid in sites if sites[sid]["cfg"].get("ref_center")), next(iter(sites)))
+    xr, yr = sites[ref_site]["cfg"].get("ref_center") or (None, None)
+    cand_ids = [i for i, w in enumerate(ranks) if w["site"] == ref_site]
+    if xr is None:
+        xr, yr = ranks[cand_ids[0]]["center_x"], ranks[cand_ids[0]]["center_y"]
+    ref_i = min(cand_ids, key=lambda i: (ranks[i]["center_x"] - xr) ** 2 + (ranks[i]["center_y"] - yr) ** 2)
     ref_w = ranks[ref_i]
     ranked = compute_distances(pooled, ref_w["metrics"], scales)
     sens = weight_sensitivity(ranked, 3, args.window_m)
     ctrl = ranked.sample(n=min(30, len(ranked)), random_state=0)
-    ref_info = {"center": [ref_w["center_x"], ref_w["center_y"]], "sensitivity_weights": sens,
+    ref_info = {"site": ref_site, "center": [ref_w["center_x"], ref_w["center_y"]], "sensitivity_weights": sens,
                 "control_median_D": float(ctrl.D.median()), "all_windows_median_D": float(ranked.D.median()),
                 "best_D": [t["D"] for t in ref_w["top"]]}
 
@@ -162,10 +184,21 @@ def main():
     context = {rid: region_context(regions[rid]) for rid in surf}
 
     # --- Salidas
-    with rasterio.open(args.lunar_dem) as src:
-        b = src.bounds
-        z, dx, dy = read_window_native(args.lunar_dem, (b.left, b.bottom, b.right, b.top))
-    hillshade_png(z, dx, dy, web / "img" / "lunar_site01.png", out_px=1000)
+    lunar_meta = {}
+    for sid, info in sites.items():
+        sc = info["cfg"]
+        with rasterio.open(sc["dem"]) as src:
+            bb = src.bounds
+        z, dx, dy = read_window_native(sc["dem"], (bb.left, bb.bottom, bb.right, bb.top))
+        hillshade_png(z, dx, dy, web / "img" / f"lunar_{sid}.png", out_px=1000)
+        comp = sc.get("composition") or {
+            "status": "pendiente",
+            "text": "Sin descripción de composición incorporada para este sitio.",
+            "caveat": "No se ha revisado literatura ni mapas de composición para este sitio.", "sources": []}
+        lunar_meta[sid] = {"id": sid, "name": sc["name"], "short": sc["short"], "description": sc["description"],
+                           "crs": info["crs"], "bounds": [bb.left, bb.bottom, bb.right, bb.top],
+                           "image": f"data/img/lunar_{sid}.png", "window_m": n * args.res, "source_url": LUNAR_URL,
+                           "illumination_source": illum_mod.SOURCE_URL, "composition": comp, "windows": int(sum(1 for w in ranks if w["site"] == sid))}
 
     reg_meta = {rid: {k: regions[rid][k] for k in ("id", "name", "short", "status", "type", "center", "roi", "reference",
                                                     "coords", "windows_total", "windows_usable", "utm")} for rid in surf}
@@ -175,8 +208,7 @@ def main():
               "processing_version": VERSION, "normalization": "MAD robusta sobre todas las regiones (conjunta)"}
     meta = {
         "experiment": "Experimento 01 · Lunar Rover Terrain Analog",
-        "lunar": {"site": "Site01 · Connecting Ridge", "crs": str(moon.crs), "bounds": [b.left, b.bottom, b.right, b.top],
-                  "image": "data/img/lunar_site01.png", "window_m": n * args.res, "source_url": LUNAR_URL},
+        "lunar_sites": lunar_meta, "default_site": ref_site, "source_url_moon": LUNAR_URL,
         "earth": {"dataset": EARTH_DATASET, "source_url": EARTH_URL, "windows_total": int(sum(r["windows_total"] for r in reg_meta.values())),
                   "windows_usable": int(len(pooled)),
                   "ranges": {k: [float(pooled[k].min()), float(pooled[k].max())] for k in METRICS}},

@@ -1,18 +1,107 @@
 {
  "experiment": "Experimento 01 · Lunar Rover Terrain Analog",
- "lunar": {
-  "site": "Site01 · Connecting Ridge",
-  "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
-  "bounds": [
-   -19000.0,
-   -20000.0,
-   -3000.0,
-   -4000.0
-  ],
-  "image": "data/img/lunar_site01.png",
-  "window_m": 2970.0,
-  "source_url": "https://pgda.gsfc.nasa.gov/products/78"
+ "lunar_sites": {
+  "site01": {
+   "id": "site01",
+   "name": "Connecting Ridge",
+   "short": "Site01 · Connecting Ridge",
+   "description": "Cresta que une los cráteres Shackleton y de Gerlache, en el polo sur.",
+   "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+   "bounds": [
+    -19000.0,
+    -20000.0,
+    -3000.0,
+    -4000.0
+   ],
+   "image": "data/img/lunar_site01.png",
+   "window_m": 2970.0,
+   "source_url": "https://pgda.gsfc.nasa.gov/products/78",
+   "illumination_source": "https://pgda.gsfc.nasa.gov/products/69",
+   "composition": {
+    "status": "cualitativo",
+    "text": "Tierras altas del polo sur. Según la literatura revisada, el impacto de Shackleton expuso anortosita muy pura (PAN) y un terreno estratificado de eyectas, cerca de Connecting Ridge.",
+    "caveat": "Descripción cualitativa de la literatura; no está mapeada con datos propios. Los mapas de FeO y plagioclasa (Lemelin et al. 2022) son de ~1 km por píxel con incertidumbre de 9 wt %, y no se han incorporado.",
+    "sources": [
+     "https://boris.unibe.ch/179288/1/Boazman_2022_Planet._Sci._J._3_275.pdf"
+    ]
+   },
+   "windows": 625
+  },
+  "site04": {
+   "id": "site04",
+   "name": "Borde de Shackleton",
+   "short": "Site04 · Borde de Shackleton",
+   "description": "Borde del cráter Shackleton, en el polo sur.",
+   "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+   "bounds": [
+    -9000.0,
+    -15000.0,
+    7000.0,
+    1000.0
+   ],
+   "image": "data/img/lunar_site04.png",
+   "window_m": 2970.0,
+   "source_url": "https://pgda.gsfc.nasa.gov/products/78",
+   "illumination_source": "https://pgda.gsfc.nasa.gov/products/69",
+   "composition": {
+    "status": "pendiente",
+    "text": "Sin descripción de composición incorporada para este sitio.",
+    "caveat": "No se ha revisado literatura ni mapas de composición para este sitio.",
+    "sources": []
+   },
+   "windows": 625
+  },
+  "site20": {
+   "id": "site20",
+   "name": "Meseta Leibnitz beta",
+   "short": "Site20 · Meseta Leibnitz beta",
+   "description": "Meseta Leibnitz beta, en la región del polo sur.",
+   "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+   "bounds": [
+    65000.0,
+    110000.0,
+    81000.0,
+    126000.0
+   ],
+   "image": "data/img/lunar_site20.png",
+   "window_m": 2970.0,
+   "source_url": "https://pgda.gsfc.nasa.gov/products/78",
+   "illumination_source": "https://pgda.gsfc.nasa.gov/products/69",
+   "composition": {
+    "status": "pendiente",
+    "text": "Sin descripción de composición incorporada para este sitio.",
+    "caveat": "No se ha revisado literatura ni mapas de composición para este sitio.",
+    "sources": []
+   },
+   "windows": 625
+  },
+  "site23": {
+   "id": "site23",
+   "name": "Macizo Malapert",
+   "short": "Site23 · Macizo Malapert",
+   "description": "Macizo Malapert, en la región del polo sur. El PGDA indica que este sitio aún no tiene estimaciones de error ni clones.",
+   "crs": "PROJCS[\"unnamed\",GEOGCS[\"unnamed ellipse\",DATUM[\"unknown\",SPHEROID[\"unnamed\",1737400,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Polar_Stereographic\"],PARAMETER[\"latitude_of_origin\",-90],PARAMETER[\"central_meridian\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1],AXIS[\"Easting\",NORTH],AXIS[\"Northing\",NORTH]]",
+   "bounds": [
+    -11000.0,
+    111000.0,
+    10000.0,
+    132000.0
+   ],
+   "image": "data/img/lunar_site23.png",
+   "window_m": 2970.0,
+   "source_url": "https://pgda.gsfc.nasa.gov/products/78",
+   "illumination_source": "https://pgda.gsfc.nasa.gov/products/69",
+   "composition": {
+    "status": "pendiente",
+    "text": "Sin descripción de composición incorporada para este sitio.",
+    "caveat": "No se ha revisado literatura ni mapas de composición para este sitio.",
+    "sources": []
+   },
+   "windows": 1156
+  }
  },
+ "default_site": "site01",
+ "source_url_moon": "https://pgda.gsfc.nasa.gov/products/78",
  "earth": {
   "dataset": "Copernicus DEM GLO-30 (ESA, ~30 m)",
   "source_url": "https://doi.org/10.5270/ESA-c5d3d65",
@@ -277,14 +366,6 @@
   "Gravedad, vacío, iluminación y polvo lunar: no reproducibles en la Tierra."
  ],
  "moon_context": {
-  "composition": {
-   "status": "cualitativo",
-   "text": "Tierras altas del polo sur. Según la literatura revisada, el impacto de Shackleton expuso anortosita muy pura (PAN) y un terreno estratificado de eyectas, cerca de Connecting Ridge.",
-   "caveat": "Descripción cualitativa de la literatura; no está mapeada con datos propios. Los mapas de FeO y plagioclasa (Lemelin et al. 2022) son de ~1 km por píxel con incertidumbre de 9 wt %, y no se han incorporado.",
-   "sources": [
-    "https://boris.unibe.ch/179288/1/Boazman_2022_Planet._Sci._J._3_275.pdf"
-   ]
-  },
   "temperature": {
    "status": "pendiente",
    "text": "Sin dato incorporado. LRO Diviner publica productos polares (Polar Cumulative Product, GDR L2), pero aún no se han descargado ni procesado.",
@@ -299,6 +380,7 @@
   }
  },
  "reference_window": {
+  "site": "site01",
   "center": [
    -11575.0,
    -9805.0

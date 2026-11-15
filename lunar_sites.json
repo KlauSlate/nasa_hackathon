@@ -1,0 +1,19 @@
+[
+  {"id": "site01", "name": "Connecting Ridge", "short": "Site01 · Connecting Ridge",
+   "description": "Cresta que une los cráteres Shackleton y de Gerlache, en el polo sur.",
+   "dem": "data/raw/Site01_final_adj_5mpp_surf.tif", "ldec": "data/raw/Site01_final_adj_5mpp_ldec.tif", "toterr": "data/raw/Site01_final_adj_5mpp_toterr.tif",
+   "ref_center": [-11395.0, -10075.0],
+   "composition": {"status": "cualitativo",
+     "text": "Tierras altas del polo sur. Según la literatura revisada, el impacto de Shackleton expuso anortosita muy pura (PAN) y un terreno estratificado de eyectas, cerca de Connecting Ridge.",
+     "caveat": "Descripción cualitativa de la literatura; no está mapeada con datos propios. Los mapas de FeO y plagioclasa (Lemelin et al. 2022) son de ~1 km por píxel con incertidumbre de 9 wt %, y no se han incorporado.",
+     "sources": ["https://boris.unibe.ch/179288/1/Boazman_2022_Planet._Sci._J._3_275.pdf"]}},
+  {"id": "site04", "name": "Borde de Shackleton", "short": "Site04 · Borde de Shackleton",
+   "description": "Borde del cráter Shackleton, en el polo sur.",
+   "dem": "data/raw/Site04_final_adj_5mpp_surf.tif", "ldec": "data/raw/Site04_final_adj_5mpp_ldec.tif", "toterr": "data/raw/Site04_final_adj_5mpp_toterr.tif"},
+  {"id": "site20", "name": "Meseta Leibnitz beta", "short": "Site20 · Meseta Leibnitz beta",
+   "description": "Meseta Leibnitz beta, en la región del polo sur.",
+   "dem": "data/raw/Site20_final_adj_5mpp_surf.tif", "ldec": "data/raw/Site20_final_adj_5mpp_ldec.tif", "toterr": "data/raw/Site20_final_adj_5mpp_toterr.tif"},
+  {"id": "site23", "name": "Macizo Malapert", "short": "Site23 · Macizo Malapert",
+   "description": "Macizo Malapert, en la región del polo sur. El PGDA indica que este sitio aún no tiene estimaciones de error ni clones.",
+   "dem": "data/raw/Site23_final_adj_5mpp_surf.tif", "ldec": "data/raw/Site23_final_adj_5mpp_ldec.tif", "toterr": "data/raw/Site23_final_adj_5mpp_toterr.tif"}
+]

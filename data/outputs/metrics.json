@@ -222,6 +222,7 @@
     }
   },
   "reference_window": {
+    "site": "site01",
     "center": [
       -11575.0,
       -9805.0

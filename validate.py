@@ -235,7 +235,11 @@ def main():
     ap.add_argument("--skip-scale", action="store_true")
     args = ap.parse_args()
     out, web = Path(args.out), Path(args.web_data)
-    P, meta, lunar = load_inputs(out, web)
+    P, meta, lunar_all = load_inputs(out, web)
+    # La validación usa el DEM y la incertidumbre de un solo sitio (el de referencia, Site01).
+    # Las ventanas de otros sitios quedan sin banderas de robustez y la interfaz lo indica.
+    vsite = meta.get("default_site", "site01")
+    lunar = [w for w in lunar_all if w.get("site", vsite) == vsite]
     scales = meta["scales"]
     regions = {rid: r for rid, r in meta["regions"].items()}
     print(f"{len(P)} ventanas terrestres, {len(lunar)} lunares")
@@ -262,7 +266,7 @@ def main():
         if scale_flags:
             w["robust"]["scale_top1_region"] = (None if any(scale_flags[k][i] is None for k in scale_flags)
                                                 else all(scale_flags[k][i] for k in scale_flags))
-    (web / "lunar_windows.json").write_text(json.dumps(lunar), encoding="utf-8")
+    (web / "lunar_windows.json").write_text(json.dumps(lunar_all), encoding="utf-8")
     print("OK ->", out / "validation.json")
 
 
