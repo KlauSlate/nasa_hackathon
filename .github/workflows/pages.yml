@@ -22,6 +22,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Versión anterior congelada en el tag v1, publicada en /v1/
+      - uses: actions/checkout@v4
+        with:
+          ref: v1
+          path: _v1
+      - name: Add v1 under /v1/
+        run: |
+          mkdir -p web/v1
+          cp -r _v1/web/. web/v1/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

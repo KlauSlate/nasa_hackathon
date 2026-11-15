@@ -10,7 +10,7 @@ const LABEL = {
 };
 const FAR_KM = 25; // más lejos que esto del sitio documentado: posible lugar nuevo
 const $ = (id) => document.getElementById(id);
-const S = { val: null, meta: null, lunar: [], earth: {}, ctx: {}, sel: 0, cand: 0, region: "all", heat: false, hover: null, maps: {}, img: null };
+const S = { val: null, meta: null, lunar: [], earth: {}, ctx: {}, sel: 0, cand: 0, region: "all", heat: false, suit: "", hover: null, maps: {}, img: null };
 
 const f1 = (x, d = 1) => Number(x).toLocaleString("es-CL", { minimumFractionDigits: d, maximumFractionDigits: d });
 const lat = (x) => `${f1(Math.abs(x), 3)}° ${x < 0 ? "S" : "N"}`;
@@ -78,6 +78,13 @@ function drawMoon() {
     const [px, py] = toPx(w.center_x, w.center_y, cv);
     g.fillStyle = heatColor(bestD(w)); g.beginPath(); g.arc(px, py, 7, 0, 7); g.fill();
   });
+  if (S.suit) S.lunar.forEach((w) => {
+    const sp = w.base_suitability && w.base_suitability[S.suit];
+    if (!sp || !sp.meets) return;
+    const [px, py] = toPx(w.center_x, w.center_y, cv);
+    g.fillStyle = "rgba(47,184,111,.85)"; g.strokeStyle = "#fff"; g.lineWidth = 1.5;
+    g.beginPath(); g.arc(px, py, 7, 0, 7); g.fill(); g.stroke();
+  });
   const half = S.meta.lunar.window_m / 2;
   const box = (w, stroke, fill, lw) => {
     const [x0, y0] = toPx(w.center_x - half, w.center_y + half, cv), [x1, y1] = toPx(w.center_x + half, w.center_y - half, cv);
@@ -100,8 +107,21 @@ function renderMoonPanel() {
     `<dt>Fracción observada por LOLA</dt><dd>${w.lola_observed_fraction == null ? "Sin datos" : pct(w.lola_observed_fraction)}<small>el resto es interpolado</small></dd>`;
   $("moonslope").innerHTML = S.meta.slope_class_labels.map((l, i) =>
     `<div class="row"><span>${l}</span><div class="track"><div class="fill" style="width:${w.slope_classes[i] * 100}%"></div></div><span class="val">${pct(w.slope_classes[i])}</span></div>`).join("");
+  renderSuitability(w);
   $("moonquality").textContent = `Mejor coincidencia en las regiones analizadas: D = ${f1(bestD(w), 2)} (menor es más parecida).`;
   S.cand = 0;
+}
+
+function renderSuitability(w) {
+  const bs = w.base_suitability;
+  if (!bs) { $("moonsuit").innerHTML = ""; $("suitnote").textContent = "Aptitud de base no disponible: vuelve a ejecutar run_regions.py."; return; }
+  $("moonsuit").innerHTML = Object.values(bs).map((p) => p.fraction == null ? "" :
+    `<div class="srow"><span class="badge ${p.meets ? "ok" : "no"}">${p.meets ? "Apta" : "No apta"}</span>
+      <span><b>${esc(p.label)}</b><small>${esc(p.criterion)}: ${pct(p.fraction)} (mínimo ${pct(p.min_fraction)})</small></span>
+      <span class="val">${pct(p.fraction)}</span></div>`).join("");
+  const n = S.lunar.length, c = (k) => S.lunar.filter((x) => x.base_suitability && x.base_suitability[k].meets).length;
+  $("suitnote").textContent = `En Site01, ${c("landing_habitat")} de ${n} ventanas cumplen el criterio de aterrizaje/hábitat y ${c("rover_traverse")} el de rover. ` +
+    "Los umbrales son hipótesis del equipo, no requisitos de NASA; la fracción de pendiente baja no garantiza terreno plano contiguo. Aún sin iluminación, temperatura ni visibilidad de la Tierra.";
 }
 
 function wireMoon() {
@@ -111,6 +131,7 @@ function wireMoon() {
   cv.addEventListener("mousemove", (ev) => { const [x, y] = pos(ev); const h = nearest(x, y); if (h !== S.hover) { S.hover = h; drawMoon(); } });
   cv.addEventListener("mouseleave", () => { S.hover = null; drawMoon(); });
   $("heat").addEventListener("change", (e) => { S.heat = e.target.checked; $("heatlegend").hidden = !S.heat; drawMoon(); });
+  $("suitsel").addEventListener("change", (e) => { S.suit = e.target.value; drawMoon(); });
   $("regionsel").addEventListener("change", (e) => { S.region = e.target.value; S.cand = 0; renderLive(); });
 }
 

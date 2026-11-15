@@ -39,7 +39,13 @@
     <div class="grid2e">
       <div class="card">
         <div class="cardhead"><b><span class="dot m"></span>Luna · Connecting Ridge (LOLA Site01)</b>
-          <label class="chk"><input type="checkbox" id="heat"> Mostrar qué tan fácil es igualar cada zona</label></div>
+          <label class="chk"><input type="checkbox" id="heat"> Mostrar qué tan fácil es igualar cada zona</label>
+          <label class="chk">Resaltar aptas para
+            <select id="suitsel" aria-label="Resaltar ventanas aptas para una función de base">
+              <option value="">—</option>
+              <option value="landing_habitat">Aterrizaje / hábitat</option>
+              <option value="rover_traverse">Traverse de rover</option>
+            </select></label></div>
         <div class="canvaswrap"><canvas id="moon" width="900" height="900" aria-label="Mapa sombreado de Site01"></canvas></div>
         <div class="legend" id="heatlegend" hidden>
           <span>Más fácil de igualar</span><i></i><span>Más difícil</span>
@@ -60,6 +66,9 @@
         <dl class="metrics" id="moonmetrics"></dl>
         <h3>Distribución de pendientes</h3>
         <div id="moonslope" class="bars"></div>
+        <h3>Aptitud para una base humana <span class="tag">solo topografía · provisional</span></h3>
+        <div id="moonsuit" class="suit"></div>
+        <p class="note" id="suitnote"></p>
         <p class="note" id="moonquality"></p>
       </aside>
       <div class="card">

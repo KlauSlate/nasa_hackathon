@@ -22,6 +22,7 @@ import rasterio
 from rasterio.warp import transform as warp_transform
 
 from run_pipeline import EARTH_DATASET, EARTH_URL, LUNAR_URL, VERSION, lunar_quality, window_polygon
+from src.base import base_suitability
 from src.context import region_context
 from src.enrich import (PENDING_VALIDATION, SLOPE_CLASSES, hillshade_png, lunar_grid, rank_lunar_windows,
                         read_window_native, slope_class_fractions)
@@ -125,6 +126,7 @@ def main():
         rk["metrics"] = {k: lr[k] for k in METRICS}
         rk["lola_observed_fraction"] = lr["lola_observed_fraction"]
         rk["slope_classes"] = lr["slope_classes"]
+        rk["base_suitability"] = base_suitability(lr["slope_classes"])
 
     # --- Ventanas terrestres referenciadas (polígono, clases de pendiente, imagen)
     refs = {(t["region"], t["row"], t["col"]) for w in ranks for t in w["top"]}
